@@ -1,18 +1,18 @@
 package com.bigdata.shopping_analyse.pojo;
 
 public class OrderDetails{
-	private int id;
+	private int order_details_id_key;
 	private String order_id;
 	private int goods_id;
 	private int goods_num;
 	private double goods_price;
 	private String create_time;
 	private String update_time;
-	public int getId() {
-		return id;
+	public int getOrder_details_id_key() {
+		return order_details_id_key;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setOrder_details_id_key(int order_details_id_key) {
+		this.order_details_id_key = order_details_id_key;
 	}
 	public String getOrder_id() {
 		return order_id;
