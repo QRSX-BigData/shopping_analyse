@@ -37,4 +37,5 @@ public class ShoppingInfo {
 		this.goods_type = goods_type;
 	}
 	
+	
 }
