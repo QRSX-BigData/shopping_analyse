@@ -1,0 +1,108 @@
+/*京东首页的css*/
+.jd{
+
+
+	position: relative;
+	
+
+}
+.jd-inner{
+	height: 480px;
+	
+	position: relative;
+	z-index: 1;/*级别  默认0  后来者居上*/
+}
+.ad{
+	height: 480px;
+	background: url(../images/bg.png) no-repeat top center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;/*一定要写*/
+}
+.ad a{
+	display: block;
+	height: 100%;
+	width: 100%;
+
+}
+.jd-col1{
+	width: 190px;
+	height: 465px;
+	background-color: #6e6568;
+	float: left;
+	padding-top: 15px;
+}
+.jd-col1 li{
+	padding-left: 10px;
+	height: 28px;
+	line-height: 28px;
+}
+.jd-col1 li:hover{
+	background-color: #ccc;
+}
+
+
+
+.jd-col2{
+	width: 792px;
+	height: 480px;
+	
+	float: left;
+	margin-left: 10px;
+}
+.jd-col3{
+	width: 190px;
+	height: 480px;
+	
+	float: right;
+}
+.jd-inner a{
+	text-decoration: none;
+	color: #fff;
+}
+.jd-inner a：hover{
+	color: #f10215!important;
+}
+
+.jd-col2-hd{
+	height: 480px;
+	width: 590px;
+	
+	float: left;
+}
+
+.jd-col2-bd .lbt img{
+	width: 100%;
+
+}
+.jd-col2-bd{
+	float: right;
+	height: 480px;
+	width: 190px;
+	
+}
+
+
+.jd-col3 .user{
+	height: 95px;
+	
+	padding:20px 15px 0;
+}
+.news{
+	height: 154px;
+
+	border-top: 1px solid #ccc;
+}
+.user-info{
+	height: 40px;
+	padding-left: 54px;
+	color: #747474;
+}
+.user-info a{
+	color: #000000;
+}
+.jd-service{
+	height: 209px;
+	
+}
