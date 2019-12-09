@@ -2,7 +2,7 @@ package com.bigdata.shopping_analyse.pojo;
 
 public class ShoppingCar {
 	private int shopping_car_id_key;
-	private String user_id;
+	private int user_id;
 	private int goods_id;
 	private String create_time;
 	private String update_time;
@@ -12,10 +12,10 @@ public class ShoppingCar {
 	public void setShopping_car_id_key(int shopping_car_id_key) {
 		this.shopping_car_id_key = shopping_car_id_key;
 	}
-	public String getUser_id() {
+	public int getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(String user_id) {
+	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
 	public int getGoods_id() {

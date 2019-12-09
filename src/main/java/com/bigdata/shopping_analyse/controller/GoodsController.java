@@ -10,25 +10,25 @@ import com.bigdata.shopping_analyse.pojo.Goods;
 
 @Controller
 public class GoodsController { 
-	@Autowired GoodsMapper shoppinginfomapper;
+	@Autowired GoodsMapper goodsmapper;
 	@RequestMapping("/goodsList") 
 	public String listCategory(Model m) throws Exception {
-		List<Goods> shop=shoppinginfomapper.findall();
-		for(Goods s : shop) {
-			System.out.println(s.getGoods_id_key()+s.getGoods_name());
-		}
-		System.out.println(shoppinginfomapper.count()); 
+		List<Goods> shop=goodsmapper.findall();
+//		for(Goods s : shop) {
+//			System.out.println(s.getGoods_id_key()+s.getGoods_name());
+//		}
+//		System.out.println(goodsmapper.count()); 
 		m.addAttribute("shop", shop);
 		return "cs_main";
 	}
 	
 	@RequestMapping("/main") 
 	public String listmain(Model m) throws Exception {
-		List<Goods> shop=shoppinginfomapper.findall();
+		List<Goods> shop=goodsmapper.findall();
 		for(Goods s : shop) {
 			System.out.println(s.getGoods_id_key()+s.getGoods_name());
 		}
-		System.out.println(shoppinginfomapper.count()); 
+		System.out.println(goodsmapper.count()); 
 		m.addAttribute("shop", shop);
 		return "index";
 	}
