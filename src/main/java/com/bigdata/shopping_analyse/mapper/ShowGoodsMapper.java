@@ -9,8 +9,8 @@ import com.bigdata.shopping_analyse.pojo.Goods;
 
 @Mapper
 public interface ShowGoodsMapper {
-	@Select("select * from shopping_info")
+	@Select("select * from goods_info")
 	List<Goods> findall();
-	@Select("select count(*) from shopping_info")
+	@Select("select count(*) from goods_info")
 	int count();
 }
