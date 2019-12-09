@@ -1,16 +1,17 @@
 package com.bigdata.shopping_analyse.pojo;
 
 public class Goods {
-	private int goods_id;
+	private int goods_id_key;
 	private String goods_name;
 	private int goods_price;
 	private int goods_num;
 	private String goods_type;
-	public int getGoods_id() {
-		return goods_id;
+	
+	public int getGoods_id_key() {
+		return goods_id_key;
 	}
-	public void setGoods_id(int goods_id) {
-		this.goods_id = goods_id;
+	public void setGoods_id_key(int goods_id_key) {
+		this.goods_id_key = goods_id_key;
 	}
 	public String getGoods_name() {
 		return goods_name;
