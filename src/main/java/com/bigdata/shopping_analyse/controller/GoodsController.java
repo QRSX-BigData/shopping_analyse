@@ -19,7 +19,7 @@ public class GoodsController {
 		}
 		System.out.println(shoppinginfomapper.count()); 
 		m.addAttribute("shop", shop);
-		return "main";
+		return "cs_main";
 	}
 	
 	@RequestMapping("/main") 
@@ -30,6 +30,6 @@ public class GoodsController {
 		}
 		System.out.println(shoppinginfomapper.count()); 
 		m.addAttribute("shop", shop);
-		return "main";
+		return "index";
 	}
 }
