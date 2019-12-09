@@ -11,7 +11,7 @@ import com.bigdata.shopping_analyse.pojo.Goods;
 @Controller
 public class ShowGoodsController { 
 	@Autowired ShoppingInfoMapper shoppinginfomapper;
-	@RequestMapping("/shoppinginfo") 
+	@RequestMapping("/goodsList") 
 	public String listCategory(Model m) throws Exception {
 		List<Goods> shop=shoppinginfomapper.findall();
 		for(Goods s : shop) {
