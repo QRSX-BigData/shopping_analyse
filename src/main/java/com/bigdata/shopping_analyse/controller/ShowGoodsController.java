@@ -15,7 +15,7 @@ public class ShowGoodsController {
 	public String listCategory(Model m) throws Exception {
 		List<Goods> shop=shoppinginfomapper.findall();
 		for(Goods s : shop) {
-			System.out.println(s.getGoods_id()+s.getGoods_name());
+			System.out.println(s.getGoods_id_key()+s.getGoods_name());
 		}
 		
 		System.out.println(shoppinginfomapper.count()); 
