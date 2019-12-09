@@ -1,7 +1,5 @@
 package com.bigdata.shopping_analyse.pojo;
 
-import java.util.Date;
-
 public class OrderDetails{
 	private int id;
 	private String order_id;
