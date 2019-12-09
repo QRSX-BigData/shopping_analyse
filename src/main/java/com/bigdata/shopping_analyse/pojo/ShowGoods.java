@@ -1,6 +1,6 @@
 package com.bigdata.shopping_analyse.pojo;
 
-public class ShoppingInfo {
+public class ShowGoods {
 	private int goods_id;
 	private String goods_name;
 	private int goods_price;
