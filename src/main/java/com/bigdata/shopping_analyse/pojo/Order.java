@@ -8,6 +8,7 @@ public class Order {
 	private double goods_price;
 	private String create_time;
 	private String update_time;
+	private OrderDetails orderdetails;
 	public int getOrder_id_key() {
 		return order_id_key;
 	}
@@ -50,5 +51,10 @@ public class Order {
 	public void setUpdate_time(String update_time) {
 		this.update_time = update_time;
 	}
-	
+	public OrderDetails getOrderdetails() {
+		return orderdetails;
+	}
+	public void setOrderdetails(OrderDetails orderdetails) {
+		this.orderdetails = orderdetails;
+	}
 }
