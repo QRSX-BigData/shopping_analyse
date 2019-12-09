@@ -20,6 +20,6 @@ public class ShowGoodsController {
 		
 		System.out.println(shoppinginfomapper.count()); 
 		m.addAttribute("shop", shop);
-		return "shopping_info";
+		return "main";
 	}
 }
