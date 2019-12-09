@@ -17,6 +17,7 @@ public class ShoppingInfoController {
 		for(ShoppingInfo s : shop) {
 			System.out.println(s.getGoods_id()+s.getGoods_name());
 		}
+		
 		System.out.println(shoppinginfomapper.count()); 
 		m.addAttribute("shop", shop);
 		return "shopping_info";
