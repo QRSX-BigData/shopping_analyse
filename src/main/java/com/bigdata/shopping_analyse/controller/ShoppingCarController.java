@@ -14,7 +14,7 @@ import com.bigdata.shopping_analyse.pojo.ShoppingCar;
 public class ShoppingCarController {
 	@Autowired ShoppingCarMapper shoppingcarmapper;
 	
-	//商品到购物车
+	//添加商品到购物车
 	@RequestMapping("/addtocar") 
 	public String listCategory(Model m,HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
