@@ -9,7 +9,7 @@ import com.bigdata.shopping_analyse.mapper.ShoppingInfoMapper;
 import com.bigdata.shopping_analyse.pojo.ShoppingInfo;
 
 @Controller
-public class ShowGoodsController { 
+public class ShowGoodsController1 { 
 	@Autowired ShoppingInfoMapper shoppinginfomapper;
 	@RequestMapping("/shoppinginfo") 
 	public String listCategory(Model m) throws Exception {
