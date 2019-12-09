@@ -21,4 +21,15 @@ public class GoodsController {
 		m.addAttribute("shop", shop);
 		return "main";
 	}
+	
+	@RequestMapping("/main") 
+	public String listmain(Model m) throws Exception {
+		List<Goods> shop=shoppinginfomapper.findall();
+		for(Goods s : shop) {
+			System.out.println(s.getGoods_id_key()+s.getGoods_name());
+		}
+		System.out.println(shoppinginfomapper.count()); 
+		m.addAttribute("shop", shop);
+		return "main";
+	}
 }
