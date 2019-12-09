@@ -6,15 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.bigdata.shopping_analyse.mapper.ShoppingInfoMapper;
-import com.bigdata.shopping_analyse.pojo.ShowGoods;
+import com.bigdata.shopping_analyse.pojo.Goods;
 
 @Controller
 public class ShowGoodsController { 
 	@Autowired ShoppingInfoMapper shoppinginfomapper;
 	@RequestMapping("/shoppinginfo") 
 	public String listCategory(Model m) throws Exception {
-		List<ShowGoods> shop=shoppinginfomapper.findall();
-		for(ShowGoods s : shop) {
+		List<Goods> shop=shoppinginfomapper.findall();
+		for(Goods s : shop) {
 			System.out.println(s.getGoods_id()+s.getGoods_name());
 		}
 		
