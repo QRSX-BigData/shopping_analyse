@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import com.bigdata.shopping_analyse.pojo.Goods;
 
 @Mapper
-public interface ShoppingInfoMapper {
+public interface ShowGoodsMapper {
 	@Select("select * from shopping_info")
 	List<Goods> findall();
 	@Select("select count(*) from shopping_info")

@@ -5,12 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.bigdata.shopping_analyse.mapper.ShoppingInfoMapper;
+import com.bigdata.shopping_analyse.mapper.ShowGoodsMapper;
 import com.bigdata.shopping_analyse.pojo.Goods;
 
 @Controller
 public class ShowGoodsController { 
-	@Autowired ShoppingInfoMapper shoppinginfomapper;
+	@Autowired ShowGoodsMapper shoppinginfomapper;
 	@RequestMapping("/goodsList") 
 	public String listCategory(Model m) throws Exception {
 		List<Goods> shop=shoppinginfomapper.findall();
