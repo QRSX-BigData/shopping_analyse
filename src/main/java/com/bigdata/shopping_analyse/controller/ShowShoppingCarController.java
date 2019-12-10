@@ -13,29 +13,31 @@ import com.bigdata.shopping_analyse.pojo.ShoppingCar;
 
 @Controller
 public class ShowShoppingCarController {
-	@Autowired ShowShoppingCarMapper showshoppingcarmapper;
+	@Autowired
+	ShowShoppingCarMapper showshoppingcarmapper;
 
-	//查看当前用户的购物车里的商品
-	@RequestMapping("/ShowCarList") 
-	public String listShoppingCar(Model m,HttpServletRequest request) throws Exception {
+	// 查看当前用户的购物车里的商品
+	@RequestMapping("/ShowCarList")
+	public String listShoppingCar(Model m, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
-		
-		//获取session中的userid
+
+		// 获取session中的userid
 		session.setAttribute("userid", 1);
 		int userid = (int) session.getAttribute("userid");
-		System.out.println("userid:"+userid);
-		
-		//根据userid 查询购物车内商品id ,根据商品id查询商品详情信息
-		ShoppingCar s =new ShoppingCar();
+		System.out.println("userid:" + userid);
+
+		// 根据userid 查询购物车内商品id ,根据商品id查询商品详情信息
+		ShoppingCar s = new ShoppingCar();
 		s.setUser_id(userid);
 		List<Goods> goodslist = showshoppingcarmapper.selectGoodsInCarByUserid(s);
-		for(Goods g : goodslist) {   
-			System.out.println(g.toString());
-		}
-
-	    // 移除session里的userid
+		m.addAttribute("goodslist",goodslist);
+		// 打印测试
+		// for(Goods g : goodslist) {
+		// System.out.println(g.toString());
+		// }
+		// 移除session里的userid
 		// session.removeAttribute("userid");
-		
-		return "cs_main";
+
+		return "cs_shoppingcarList";
 	}
 }
