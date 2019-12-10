@@ -1,70 +1,136 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8"/>
-		<title>登录页面</title>
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-		<link rel="stylesheet" href="style.css">
-		<!-- normalize 初始化  针对浏览器-->
-		<link rel="stylesheet" href="css/normalize.css"/>
-		
-		<!-- 里面只写公共样式 京东网页的头部和底部样式-->
-		<link rel="stylesheet" href="css/login.css"/>
-		
-		
-	</head>
-	<body>
-		<!--top start-->
-		<div class="top_border">	
-			<div class="w top">
-				<div class="logo"> </div>
-				<div class="wellcome">
-					<h2>欢迎登录</h2>
-				</div>
-				<div class="inner_right">
-					
-					<a href=""><h3>登录页面调查问卷&gt;</h3></a>
-				</div>
+    <head>
+        <meta charset="UTF-8">
+        <title>京东-欢迎登录</title>
+        <!--设置网页图标
+            rel:icon(设置图标)
+            type:文件类型  image/x-ico（X代表未知）
+            href：链接地址
+        -->
+        <script src="./js/vue.min.js"></script>
+        <script src="./js/axios.min.js"></script>
+        <link rel="icon" type="image/x-ico" href="image/bb.png"/>
+        <link rel="stylesheet" type="text/css" href="css/jingd.css"/>
+        
+        
+        
+        
+    </head>
+    <body>
+        <!--=====1、顶部=====-->
+        <div id="header">
+            <div class="h-top">
+                <!--图标部分-->
+                <div class="icon">
+                    <img src="images/logo.png"/>
+                    <img src="images/l-icon.png"/>
+                </div>
+                
+                <!--问卷-->
+                <a href="https://surveys.jd.com/index.php?r=survey/index/sid/568245/lang/zh-Hans" target="_blank">登录页面，调查问卷</a>
+                
+            </div>
+            <!--下面的文字-->
+            
+            <div class="h-bottom">
+                <div id="">
+                    <img src="images/warning.png"/>
+                    <p>依据《网络安全法》，为保障您的账户安全和正常使用，请尽快完成手机号验证！ 新版<a href="https://about.jd.com/privacy/">《京东隐私政策》</a>已上线，将更有利于保护您的个人隐私。</p>
+                </div>
+                
+            </div>
+        </div>
+        
+         <!--=====2、中间内容=====-->
+        <div id="content">
+            <div class="input_div">
+                <div class="info-top">
+                    <div class="top-top">
+                        <img src="images/warning.png"/>
+                        <p>京东不会以任何理由要求您转账汇款，谨防诈骗。</p>
+                    </div>
+                    <div class="top-bottom">
+                        <button >扫码登录</button>|
+                        <button>账号登录</button>
+                    </div>
+                </div>
+                
+                <!--输入框模块-->
+                <div id="app" class="info-middle">
+                    <div class="username">
+                       
+                        <input type="text" name="username" id="username" v-model="account.username" placeholder="邮箱/用户名/已验证手机" />
+                    </div>
+                    <div class="password">
+                        
+                        <input type="password" name="password" id="password" v-model="account.password" placeholder="密码" />
+                    
+                    </div>
+                    
+                    <!--忘记密码-->
+                    <a href="regist.html">注册账户</a>
+                    
+                    <button id="log" v-on:click="login">登  录</button>
+                    
+                </div>
+             
+          
+            </div>
+            
+        </div>
+        
+        
+        <!--=====3、底部=====-->
+        <div id="footer">
+            <div class="other"> 
+                <a href="https://www.jd.com/" class="about">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="http://about.jd.com/contact" class="call">联系我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="http://zhaopin.jd.com/home;jsessionid=0D8472A29BF72DC239E3DE9FA99D04A9.s1" class="people">人才招聘</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="https://www.jd.com/" class="peo">商家入驻</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://www.jd.com/" class="tall">广告服务</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://app.jd.com/" class="phone">手机京东</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://club.jd.com/links.aspx" class="friend">友情链接</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://media.jd.com/" class="shop">销售联盟</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://sale.jd.com/act/n0hAvqy5CW8.html" class="club">京东社区</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="https://gongyi.jd.com/" class="love">京东公益</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://www.joybuy.com/" class="english">English Site</a> 
+            </div> 
+            <div class="versions"> 
+                <span>Copyright © 2004-2018 京东JD.com 版权所有</span> 
+            </div> 
+    
+        </div>
+    </body>
+    <script type="text/javascript">
+        var account = {
+            information:{
+                username:'',
+                password:''
+            }
+        }
+        var vue = new Vue({
+            el:'#app',
+            data:{
+                account
+            },
+            methods:{
+                login:function(event){
+                    this.username = document.getElementById("username").value;
+                    this.password = document.getElementById("password").value;
+                    console.log(this.username);
+                    console.log(this.password);
+                    var url = "login";
+                    axios.post(url,this.account).then(function(response){
+                        if(response.data=='success'){
+                            window.location.href='index';
+                        }else{
+                            alert("账号或密码输入错误");
+                        }
+                    });
+                }
 
-			</div>
-		</div>
-		<!--top end-->
-		<!--login body start-->
-		<div class="prompt">
-			<p>依据《网络安全法》，为保障您的账户安全和正常使用，请尽快完成手机号验证！ 新版《京东隐私政策》已上线，将更有利于保护您的个人隐私。</p>
-		</div>
-		<div class="w">
-			<div class="login_body">
-				<div class="login_form">
-					<div class="explain"><p>京东不会以任何理由要求您转账汇款，谨防诈骗。</p></div>
-					<form action="">
-						<div class="select_login">
-							<div class="search_login">
-								<a href="">扫码登录</a>
-							</div>
-							<div class="wei_login">
-								<a href="">危险登录</a>
-							</div>
-						</div>
-						<div class="user">
-							<label for="">用户名</label>
-							<input type="text" value="邮箱/用户名/手机">
-						</div>
-						<div class="password">
-							<label >密码</label>
-							<input type="text" value="密码">
-						</div>
-						<div class="login_button">
-							
-							<input type="button" value="登录"  onclick="window.location.href='http://localhost:8081/page/index.html'">
-						</div>
-					</form>
-
-				</div>
-				
-			</div>
-		</div>
-
-		
-	</body>
+            }
+        });
+    </script>
 </html>

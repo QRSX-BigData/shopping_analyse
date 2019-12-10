@@ -1,5 +1,6 @@
 package com.bigdata.shopping_analyse.mapper;
 
+import com.bigdata.shopping_analyse.pojo.Account;
 import com.bigdata.shopping_analyse.pojo.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -9,8 +10,14 @@ import org.apache.ibatis.annotations.Select;
 public interface RegistMapper {
     //注册
     @Insert("insert into user_info (username,userpwd) values(#{username},#{password})")
-    public int add(User user);
+    public int add(Account account);
+
     //判断是否存在
     @Select("select count(username) from user_info where username=#{username}")
-    public int get(User user);
+    public int get(Account account);
+
+    //登陆
+    @Select("select * from usertable where username=#{0} and password = #{1}")
+    public Account select(String username,String password);
+
 }
