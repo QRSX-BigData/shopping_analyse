@@ -13,4 +13,5 @@ public interface GoodsMapper {
 	List<Goods> findall();
 	@Select("select count(*) from goods_info")
 	int count();
+	
 }

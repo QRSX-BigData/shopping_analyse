@@ -21,7 +21,7 @@ public class GoodsController {
 		m.addAttribute("shop", shop);
 		return "cs_main";
 	}
-	
+	 
 	@RequestMapping("/main") 
 	public String listmain(Model m) throws Exception {
 		List<Goods> shop=goodsmapper.findall();
