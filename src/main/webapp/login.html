@@ -120,10 +120,10 @@
                     this.password = document.getElementById("password").value;
                     console.log(this.username);
                     console.log(this.password);
-                    var url = "login";
+                    var url = "login1";
                     axios.post(url,this.account).then(function(response){
                         if(response.data=='success'){
-                            window.location.href='index';
+                            window.location.href='index.html';
                         }else{
                             alert("账号或密码输入错误");
                         }

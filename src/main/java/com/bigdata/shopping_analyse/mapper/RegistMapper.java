@@ -17,7 +17,7 @@ public interface RegistMapper {
     public int get(Account account);
 
     //登陆
-    @Select("select * from usertable where username=#{0} and password = #{1}")
-    public Account select(String username,String password);
+    @Select("select * from user_info where username=#{0} and userpwd = #{1}")
+    public Account select(String username,String userpwd);
 
 }

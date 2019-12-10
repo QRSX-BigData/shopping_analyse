@@ -27,13 +27,24 @@ public class RegistController {
             return "success";
         }else return "false";
     }
-
-    //注册页面跳转
-    @RequestMapping(value="/regist", method= RequestMethod.GET)
-    public ModelAndView regist(){
-        ModelAndView mv = new ModelAndView("regist");
-        return mv;
+    //登陆
+    @RequestMapping("/login1")
+    public String select(@RequestBody Account account) throws Exception{
+        String username = account.getUsername();
+        String userpwd = DigestUtils.md5DigestAsHex(account.getPassword().getBytes());
+        System.out.println(username);
+        System.out.println(userpwd);
+        Account a = registService.select(username,userpwd);
+        if (a==null){
+            return "false";
+        }else{
+            return "success";
+        }
     }
+
+
+
+
 
 
 }
