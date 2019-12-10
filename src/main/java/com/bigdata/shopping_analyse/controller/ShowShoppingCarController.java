@@ -38,6 +38,6 @@ public class ShowShoppingCarController {
 		// 移除session里的userid
 		// session.removeAttribute("userid");
 
-		return "cs_shoppingcar";
+		return "cs_shoppingcarList";
 	}
 }
