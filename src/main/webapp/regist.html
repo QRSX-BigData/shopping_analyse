@@ -1,231 +1,124 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8"/>
-		<title>注册页面</title>
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-		<link rel="stylesheet" href="style.css">
-		<!-- normalize 初始化  针对浏览器-->
-		<link rel="stylesheet" href="css/normalize.css"/>
-		
-		<!-- 里面只写公共样式 京东网页的头部和底部样式-->
-		<link rel="stylesheet" href="css/regist.css"/>
-		
-		
-	</head>
-	<body>
-		<!--top start-->
-		<div class="top_border">	
-			<div class="w top">
-				<div class="logo"> </div>
-				<div class="wellcome">
-					<h2>欢迎注册</h2>
-				</div>
-				<div class="inner_right">
-					<h3 class="txt">已有账号？</h3>
-					<a href="http://localhost:8081/page/login.html"><h3>&nbsp;&nbsp;&nbsp;请登录&gt;</h3></a>
-				</div>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>个人注册</title>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/vue.min.js"></script>
+	<script src="./js/axios.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/regist.css"/>
+    <link rel="icon" type="image/x-ico" href="images/bb.png"/>
 
+
+</head>
+
+<body>
+<div>
+
+		<!-- =====1、顶部====== -->
+			<div id="header">
+				<div class="images/h-top">
+				<!-- 图标logo -->
+				<img src="images/logo.png">
+				</div>
+				<!-- 已有账号 -->
+				<p>已有账号？<a href="login.html">请登录></a></p>
 			</div>
-		</div>
-		<!--top end-->
-		
-		<!--regist body start-->
-		<div class="w">
-			<div class="regist_body">
-				<div class="step_index">
-					<div class="step1">
-						<div class="number">
-							<span>1</span>
-						</div>
-						<p>验证手机</p>
+			
+			<!-- =====2、中间内容 -->
+			<div id="app">
+			<div id="content">
+				<div class="input_div">
+					<div class="input-middle">
+						<input type="text" name="username" class="username" id="username" value="" v-model="register.username" placeholder=" 账号" >
+						<input type="password" name="password" class="password" id="password"  v-model="register.password" placeholder=" 密码">
+						<input type="password" name="passwordsecond" class="password" id="passwordsecond"  v-model="passw.pass" placeholder=" 再次输入密码">
+						<br><br><br><br><br><br><br>
+						<span id="tishi"></span>
+					
 					</div>
-					<div class="space1">-------&gt;</div>
-					<div class="step2">
-						<div class="number">
-							<span>2</span>
-						</div>
-						<p>填写账号</p>
-					</div>
-					<div class="space2">-------&gt;</div>
-					<div class="step3">
-						<div class="number">
-							<span>3</span>
-						</div>
-						<p>注册成功</p>
-					</div>
-				</div>
-				<div class="form">
-					<form action="">
-						<div class="phone">
-							<div class="select_country">
-								<p>中国大陆</p>
-							</div>
-							<div class="phone_number">
-								<input type="text" value="请填写常用手机号，以免发生爆炸">
-							</div>
-						</div>
-						<div class="password">
-							<div class="password_prompt">
-								<p>密码</p>
-							</div>
-							<div class="password_text">
-								<input type="text" value="无密码将发生爆炸">
-							</div>
-						</div>
-						<div class="regist_button">
-								<input type="button" value="点这里带你飞">
-						</div>
-
-					</form>
-					<div class="bottom">
-							<div class="left">
-								<a href="">宇宙无敌超级用户注册</a>
-							</div>
-							<div class="right"><a href="">VIP用户注册</a></div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-		
-		<!--regist body end-->
-		<!--foot start-->
-		<div class="w">
-			<div class="footer">
-				<div class="footer-service">
-					<!--多快好省  start-->
-					<div class="w footer-inner">
-						<ul class="clearfix">
-							<li>
-								<div class="service_unit">
-									<h5>多</h5>
-									<p>什么都有，轻松购物</p>
-								</div>
-							</li>
-							<li>
-								<div class="service_unit">
-									<h5>快</h5>
-									<p>什么都有，轻松购物</p>
-								</div>
-							</li>
-							<li>
-								<div class="service_unit">
-									<h5>好</h5>
-									<p>什么都有，轻松购物</p>
-								</div>
-							</li>
-							<li>
-								<div class="service_unit">
-									<h5>省</h5>
-									<p>什么都有，轻松购物</p>
-								</div>
-							</li>
-						</ul>
 				
-					</div>
-					<!--多快好省  end -->
-					<!--help start-->
-					<div class="w help">
-						<dl>
-							<dt>武林秘籍</dt>
-							<dd><a href="#">葵花宝典</a></dd>
-							<dd><a href="#">九阴真经</a></dd>
-							<dd><a href="#">情意绵绵刀</a></dd>
-							<dd><a href="#">六脉神剑</a></dd>
-							<dd><a href="#">易筋经</a></dd>
-							<dd><a href="#">天山折梅手</a></dd>
-						</dl>
-						<dl>
-							<dt>武林秘籍</dt>
-							<dd><a href="#">葵花宝典</a></dd>
-							<dd><a href="#">九阴真经</a></dd>
-							<dd><a href="#">情意绵绵刀</a></dd>
-							<dd><a href="#">六脉神剑</a></dd>
-							<dd><a href="#">易筋经</a></dd>
-							<dd><a href="#">天山折梅手</a></dd>
-						</dl>
-						<dl>
-							<dt>武林秘籍</dt>
-							<dd><a href="#">葵花宝典</a></dd>
-							<dd><a href="#">九阴真经</a></dd>
-							<dd><a href="#">情意绵绵刀</a></dd>
-							<dd><a href="#">六脉神剑</a></dd>
-							<dd><a href="#">易筋经</a></dd>
-							<dd><a href="#">天山折梅手</a></dd>
-						</dl>
-						<dl>
-							<dt>武林秘籍</dt>
-							<dd><a href="#">葵花宝典</a></dd>
-							<dd><a href="#">九阴真经</a></dd>
-							<dd><a href="#">情意绵绵刀</a></dd>
-							<dd><a href="#">六脉神剑</a></dd>
-							<dd><a href="#">易筋经</a></dd>
-							<dd><a href="#">天山折梅手</a></dd>
-						</dl>
-						<dl>
-							<dt>武林秘籍</dt>
-							<dd><a href="#">葵花宝典</a></dd>
-							<dd><a href="#">九阴真经</a></dd>
-							<dd><a href="#">情意绵绵刀</a></dd>
-							<dd><a href="#">六脉神剑</a></dd>
-							<dd><a href="#">易筋经</a></dd>
-							<dd><a href="#">天山折梅手</a></dd>
-						</dl>
-						<dl class="cover">
-							<dt>特别说明</dt>
-							<dd class="info">修炼此武林秘籍需要非常谨慎，否则容易走火入魔，如若不按规定修炼走火入魔本公司概不负责    ------->中国功夫出品</dd>
-							<dd class="more"><a href="#">查看详情</a></dd>
-							
-						</dl>
-
-
-					</div>
-
-					<!--help end-->
-					<!--版权(底部模块)  start-->
-					<div class="w copyrght">
-						<div class="links">
-							<a href="">关于我们</a>
-							<span>|</span>
-							<a href="">关于我们</a>
-							<span>|</span>
-							<a href="">关于我们</a>
-							<span>|</span>
-							<a href="">关于我们</a>
-							<span>|</span>
-							<a href="">关于我们</a>
-							<span>|</span>
-							<a href="">关于我们</a>
-							<span>|</span>
-							<a href="">关于我们</a>
-							<span>|</span>
-							<a href="">关于我们</a>
-							<span>|</span>
-							<a href="">关于我们</a>
-							<span>|</span>
-							<a href="">关于我们</a>
-							<span>|</span>
-							<a href="">关于我们</a>
-							<span>|</span>
-							<a href="">关于我们</a>
-							<span>|</span>
-							<a href="">关于我们</a>
-							
-							
+					<div class="info-bottom">
+						<button class="xiayi" type="button" id="button1"  @click="add">注册</button>
 						</div>
-						<div class="c-info">
-							<p>我从网上随机抄了一段文字|我从网上随机抄了一段文字</p>
-							<p>我从网上随机抄了一段文字|我从网上随机抄了一段文字</p>
-							<p>我从网上随机抄了一段文字|我从网上随机抄了一段文字</p>
-						</div>
+						<div class="info-bottomer">
+						<img class="qiyetu"  src="images/qiye.png">
+						<a class="qiye" href="">企业用户注册</a>
+						<img  class="haiwaitu" src="images/haiwai.png">
+						<a class="haiwai" href="">海外用户注册</a>
 					</div>
-					<!--版权(底部模块)  end-->
 				</div>
-
-
 			</div>
-		</div>
-		<!--foot end-->
-	</body>
+			</div>
+			
+			
+			<!--=====3、底部=====-->
+        <div id="footer">
+            <div class="other"> 
+                <a href="https://www.jd.com/" class="about">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="http://about.jd.com/contact" class="call">联系我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="http://zhaopin.jd.com/home;jsessionid=0D8472A29BF72DC239E3DE9FA99D04A9.s1" class="people">人才招聘</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="https://www.jd.com/" class="peo">商家入驻</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://www.jd.com/" class="tall">广告服务</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://app.jd.com/" class="phone">手机京东</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://club.jd.com/links.aspx" class="friend">友情链接</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://media.jd.com/" class="shop">销售联盟</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://sale.jd.com/act/n0hAvqy5CW8.html" class="club">京东社区</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="https://gongyi.jd.com/" class="love">京东公益</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://www.joybuy.com/" class="english">English Site</a> 
+            </div> 
+            <div class="versions"> 
+                <span>Copyright © 2004-2018 京东JD.com 版权所有</span> 
+            </div> 
+    
+        </div>
+</div>
+
+
+
+</body>
+<script type="text/javascript">
+	var register = {
+		registerdata:{
+		username: '',
+		password: '',
+		}
+	};
+	var passw = {
+	password:{
+	pass:''
+	}
+	}
+	var vue = new Vue({
+		el:'#app',
+		data:{
+		register,
+		passw
+		},
+		methods:{
+			add:function(event){
+			this.password = document.getElementById("password").value;
+			this.pass = document.getElementById("passwordsecond").value;
+			console.log(vue.password)
+			console.log(vue.pass)
+				if (vue.password===vue.pass) {
+				console.log(vue.password)
+				console.log(vue.pass)
+				var url = "register";
+				axios.post(url,this.register).then(function(response){
+					if (response.data=='success') {<!-- response.data用来接收Controller返回的东西 -->
+						window.location.href='login';
+					}else{
+						document.getElementById("username").value='';
+						alert("用户名已存在请重新输入！");
+					}
+				});
+			}else{
+				alert("密码不一致请重新输入");
+				document.getElementById("passwordsecond").value='';
+			}
+			}
+		}
+	});
+</script>
 </html>
