@@ -33,8 +33,6 @@ public class ShoppingCarController {
 		
 	    //移除session里的userid
 		session.removeAttribute("userid");
-//		int userid2 = (int) session.getAttribute("userid");
-//		System.out.println("userid:"+userid2);
 		
 		return "cs_main";
 	}
