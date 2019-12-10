@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>hello</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div style="width: 500px; margin: 20px aut o; text-align: center">
+		<table align='center' border='1' cellspacing='0'>
+			<tr>
+				<td>id</td>
+				<td>商品名</td>
+				<td>商品价格</td>
+				<td>商品数量</td>
+				<td>商品分类</td>
+			</tr>
+			<tr th:each="c:${goodslist}">
+				<td th:text="${c.goods_id_key}"></td>
+				<td th:text="${c.goods_name}"></td>
+				<td th:text="${c.goods_price}"></td>
+				<td th:text="${c.goods_num}"></td>
+				<td th:text="${c.goods_type}"></td>
+			</tr> 
+		</table>
+	</div>
+</body>
+</html>
