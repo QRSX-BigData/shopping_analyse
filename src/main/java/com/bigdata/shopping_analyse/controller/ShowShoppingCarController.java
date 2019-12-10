@@ -13,14 +13,13 @@ import com.bigdata.shopping_analyse.pojo.ShoppingCar;
 @Controller
 public class ShowShoppingCarController {
 	@Autowired ShoppingCarMapper shoppingcarmapper;
-	
-	//添加商品到购物车
-	@RequestMapping("/addtocar") 
-	public String listCategory(Model m,HttpServletRequest request) throws Exception {
+
+	//查看当前用户的购物车里的商品
+	@RequestMapping("/ShowCarList") 
+	public String listShoppingCar(Model m,HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		
-		//把登录名放到session中
-		session.setAttribute("userid", 1);
+		//获取session中的用户名
 		int userid = (int) session.getAttribute("userid");
 		System.out.println("userid:"+userid);
 		
@@ -31,8 +30,8 @@ public class ShowShoppingCarController {
 		int num = shoppingcarmapper.insertgoods(s);
 		System.out.println(num);
 		
-	    //移除session里的userid
-		session.removeAttribute("userid");
+	    // 移除session里的userid
+		// session.removeAttribute("userid");
 		
 		return "cs_main";
 	}
