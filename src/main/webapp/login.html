@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>京东-欢迎登录</title>
@@ -10,7 +10,7 @@
         -->
         <script src="./js/vue.min.js"></script>
         <script src="./js/axios.min.js"></script>
-        <link rel="icon" type="image/x-ico" href="image/bb.png"/>
+        <link rel="icon" type="image/x-ico" href="images/bb.png"/>
         <link rel="stylesheet" type="text/css" href="css/jingd.css"/>
         
         
@@ -71,7 +71,7 @@
                     <!--忘记密码-->
                     <a href="regist.html">注册账户</a>
                     
-                    <button id="log" v-on:click="login">登  录</button>
+                    <button id="log" @click="login">登  录</button>
                     
                 </div>
              
