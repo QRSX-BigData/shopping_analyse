@@ -18,15 +18,24 @@ public class ShoppingCarController {
 	@RequestMapping("/addtocar") 
 	public String listCategory(Model m,HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
-		//把登录名放到request中
+		
+		//把登录名放到session中
 		session.setAttribute("userid", 1);
 		int userid = (int) session.getAttribute("userid");
 		System.out.println("userid:"+userid);
+		
+		//将userid goodsid 插入购物车数据库
 		ShoppingCar s =new ShoppingCar();
 		s.setUser_id(userid);
 		s.setGoods_id(1);
 		int num = shoppingcarmapper.insertgoods(s);
 		System.out.println(num);
+		
+	    //移除session里的userid
+		session.removeAttribute("userid");
+//		int userid2 = (int) session.getAttribute("userid");
+//		System.out.println("userid:"+userid2);
+		
 		return "cs_main";
 	}
 }
