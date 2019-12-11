@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>购物车</title>
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+		<link rel="stylesheet" href="style.css">
+		<!-- normalize 初始化  针对浏览器-->
+		<link rel="stylesheet" href="css/normalize.css"/>
+		
+		<!-- 里面只写公共样式 京东网页的头部和底部样式--> 
+		<link rel="stylesheet" href="css/shop.css"/>
+				<style type="text/css">
+		.fifth_div_7_button_1 {
+   
+    top: 605px;
+    left: 150px;
+    text-align: center;
+    font-size: 18px;
+    font-family: "microsoft yahei";
+    color: 
+#fff;
+background-color:
+    #df3033;
+    width: 150px;
+    height: 48px;
+    border: none;
+}
+	</style>
+		
+	</head>
+	<body> 
+		<!--top start-->
+		<div class="shortcut w">
+			<div class="w">
+				<ul class="fl">
+					<li>
+						<i class="pos"></i>
+						南通
+					</li>
+				</ul>
+				<ul class="fr">
+					<li>
+						<a href="#">你不好，请出门左转</a>
+						&nbsp;
+						<a href="#" class="style-red">或者你可以注册</a>
+					</li>
+					<li class="spacer"></li>
+					<li>
+						<a href="#">
+							首页
+						</a>
+					</li>
+					<li class="spacer"></li>
+					<li>
+						<a href="#">
+							我的订单
+						</a>
+					</li>
+					<li class="spacer"></li>
+					<!--dropdown是下拉选项-->
+					<li class="dropdown">
+						<a href="#">
+							特殊选项
+							<i></i>
+						</a>
+					</li>
+					<li class="spacer"></li>
+					<li class="dropdown">
+						<a href="#">
+							特殊选项
+							<i></i>
+						</a>
+					</li>
+					<li class="spacer"></li>
+					<li style="position: relative;">
+						<a href="#">
+							手机京东
+
+						</a>
+						<div class="erweima">
+							<img src="images/erweima.png" alt="">
+						</div>
+					</li>
+				
+				</ul>
+			</div>
+		</div>	
+		<!--top end-->
+		<!--header start-->
+		<div class="w header">
+			<div class="logo">
+				<a href=""></a>
+				<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;购物车</h2>
+			</div>
+			<div class="search">
+				<form action="">
+					<input class="txt" type="text">
+					<input class="but" type="submit" name="" value="搜索">
+				</form>
+
+			</div>
+
+		</div>
+		<!--header end-->
+		<!--shop body start-->
+		<div class="w">
+			<div class="nav">
+				<ul class="nav_list">
+					<li><a href="">全部分类</a></li>
+					<li><a href="">首页</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+
+				</ul>
+	
+			</div>
+			<div class="guid">
+				<ul class="guid_list">
+					<li><a href="">手机通讯</a></li>
+					<p>&gt;</p>
+					<li><a href="">手机</a></li>
+					<p>&gt;</p>
+					<li><a href="">一加</a></li>
+					<p>&gt;</p>
+					<li><a href="">一加五</a></li>
+
+				</ul>
+
+			</div>
+			<div class="shop_body">
+				<div class="show">
+
+				</div>
+				<div class="info">
+					<div class="sku_name">
+
+						<p>
+							<tr th:each="c:${shop}">
+							<td th:text="${c.goods_name}"></td>
+								</tr> </p>
+						
+						
+						
+					</div>
+					<div></div>
+					<div class="hide">
+						<p>【品质特惠】抢购价2899！压感屏幕指纹，骁龙845AIE旗舰处理器！</p>
+						<a href="">努比亚爆品特惠，选品质，购努比亚！</a>
+
+					</div>
+					<div class="price">
+						<div class="dd1">
+							<p class="p1">京东价</p>
+							<p class="p2">￥</p>
+							<p class="p3" >
+							<tr th:each="c:${shop}">
+							<td th:text="${c.goods_price}"></td>
+								</tr>
+							</p>
+							<p class="p5">库存</p>
+							<p class="p4" >
+							<tr th:each="c:${shop}">
+							<td th:text="${c.goods_num}"></td>
+								</tr></p>
+
+						</div>
+						<div class="summary">
+							<p>促&nbsp;销&nbsp;满额返券&nbsp;购买此商品满10元返配件优惠券 详情 </p>
+						</div>
+						<div class="ss1">
+							<p>增值业务</p>
+						</div>
+						<div class="ss2">
+							<div class="left">
+								<p>配送至</p>
+							</div>
+							<div class="center">
+								<p>江苏省南通市</p>
+							</div>
+							<div class="right">
+								<p>&nbsp;有货&nbsp;支持&nbsp;<a href="">99元包邮</a></p>
+							</div>
+						</div>
+						<div class="ss3">
+							<p>重&nbsp;量&nbsp;&nbsp;0.44kg</p>
+						</div>
+					</div>
+					<div class="choose">
+						<div class="choose1">
+							<div class="color">
+								<p>颜&nbsp;色</p>
+							</div>
+							<div class="color_info">
+								<div class="color_select">
+									<a href="#none">黑</a>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+										<div>
+					<button class="fifth_div_7_button_1">立即购买</button>
+					<button class="fifth_div_7_button_1">加入购物车</button>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+
+
+		
+	</body>
+</html>

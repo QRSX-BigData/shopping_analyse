@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+
+<html>
+	<head> 
+	<script src="js/jquery.min.js"></script>
+	<link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet" />
+	<script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
+	<script src="js/vue/2.5.16/vue.min.js"></script>
+	<script src="js/axios/axios.min.js"></script>
+	<script src="js/moment/2.22.2/moment.js"></script>
+	<link href="css/fore/style.css" rel="stylesheet" />
+	
+	<link rel="stylesheet" href="css/category3.css"/>
+	<script>
+	
+	
+	    function getUrlParms(para){
+		    var search=location.search; //页面URL的查询部分字符串
+		    var arrPara=new Array(); //参数数组。数组单项为包含参数名和参数值的字符串，如“para=value”
+		    var arrVal=new Array(); //参数值数组。用于存储查找到的参数值
+		 
+		    if(search!=""){	
+		        var index=0;
+		        search=search.substr(1); //去除开头的“?”
+		        arrPara=search.split("&");
+		 
+		        for(i in arrPara){
+		            var paraPre=para+"="; //参数前缀。即参数名+“=”，如“para=”
+		            if(arrPara[i].indexOf(paraPre)==0&& paraPre.length<arrPara[i].length){
+		                arrVal[index]=decodeURI(arrPara[i].substr(paraPre.length)); //顺带URI解码避免出现乱码
+		                index++;
+		            }
+		        }
+		    }
+		 
+		    if(arrVal.length==1){
+		        return arrVal[0];
+		    }else if(arrVal.length==0){
+		        return null;
+		    }else{
+		        return arrVal;
+		    }
+	    }		
+	
+        function formatMoney(num){
+        	num = new String(num);
+            num = num.toString().replace(/\$|\,/g,'');
+            if(isNaN(num))
+                num = "0";
+            sign = (num == (num = Math.abs(num)));
+            num = Math.floor(num*100+0.50000000001);
+            cents = num%100;
+            num = Math.floor(num/100).toString();
+            if(cents<10)
+                cents = "0" + cents;
+            for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
+                num = num.substring(0,num.length-(4*i+3))+','+
+                    num.substring(num.length-(4*i+3));
+            return (((sign)?'':'-') + num + '.' + cents);
+        }
+        
+        function checkEmpty(id, name){
+            var value = $("#"+id).val();
+            if(value.length==0){
+                $("#"+id)[0].focus();
+                return false;
+            }
+            return true;
+        }
+
+        function linkDefaultActions(){
+            $("span.leaveMessageTextareaSpan").hide();
+            $("img.leaveMessageImg").click(function(){
+                $(this).hide();
+                $("span.leaveMessageTextareaSpan").show();
+                $("div.orderItemSumDiv").css("height","100px");
+            });
+            $("div#footer a[href$=#nowhere]").click(function(){
+                alert("模仿天猫的连接，并没有跳转到实际的页面");
+            });
+            $("a.wangwanglink").click(function(){
+                alert("模仿旺旺的图标，并不会打开旺旺");
+            });
+
+            $("a.notImplementLink").click(function(){
+                alert("这个功能没做，蛤蛤~");
+            });
+        }        
+        
+        Vue.filter("subStringFilter", function(value, start, end){
+    		if (!value) 
+    			return '';
+    		return value.substring(start,end);
+    	});  
+        
+        Vue.filter("formatMoneyFilter", function(value){
+        	return formatMoney(value);
+        });  
+        
+        Vue.filter('formatDateFilter', function (value, formatString) {
+        	if(null==value)
+        		return "";
+            formatString = formatString || 'YYYY-MM-DD HH:mm:ss';
+            return moment(value).format(formatString);
+        });              
+
+	</script>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 	
+</head>
+	<body>
+		<div id="workingArea">
+			<nav class="top">
+	<a href="/tmall_springboot">
+		<span class=" glyphicon glyphicon-home redColor" style="color:#C40000;margin:0px"></span>
+		天猫首页
+	</a>
+
+	<span>欢迎来京东</span>
+
+	
+	
+	<span>
+		<a href="login">请登录</a>
+		<a href="register">免费注册</a>
+	</span>
+
+
+	<span class="pull-right">
+			<a href="bought">我的订单</a>
+			<a href="cart">
+			<span class=" glyphicon glyphicon-shopping-cart redColor" style="color:#C40000;margin:0px"></span>
+			购物车<strong>0</strong>件</a>
+	</span>
+</nav>	
+			<div class=""> 
+	<a href="/tmall_springboot">
+		<img class="logo" id="logo" src="images/site/logo.gif" />
+	</a>
+	<form action="search" method="get">
+		<div class="searchDiv">
+			<input name="keyword" placeholder=" " type="text" />
+			<button class="searchButton" type="submit">搜索</button>
+			
+		</div>
+	</form>
+</div>	
+			<div> 
+	<script>
+		$(function(){
+			var cid = getUrlParms("cid");
+			var sort = getUrlParms("sort");
+	        var data4Vue = {
+	        		uri:'forecategory',
+	        		c:'',
+	        		sort:''
+	        };
+	        //ViewModel
+	        var vue = new Vue({
+	            el: '#workingArea',
+	            data: data4Vue,
+	            mounted:function(){ //mounted　表示这个 Vue 对象加载成功了
+	            	this.load();
+	            },        
+	            methods: {     	
+	            	load:function(){
+	            		this.sort = sort;
+	                    var url =  this.uri+"/"+cid+"?sort="+sort;
+	                    axios.get(url).then(function(response) {
+	                    	vue.c = response.data;
+	                        vue.$nextTick(function(){
+	        	            	linkDefaultActions();
+	                        })
+	                    });
+	                    
+	            	}
+	            }
+	        });       			
+			
+		})
+	</script>
+	
+	<title>模仿天猫官网-{{c.name}}</title>	
+	<div id="category">
+		<div class="categoryPageDiv">
+			<img :src="'img/category/'+c.id+'.jpg'" v-if="c.id!=null" />
+			<div> 
+	<script>
+		$(function(){
+			$("input.sortBarPrice").keyup(function(){
+				var num= $(this).val();
+				if(num.length==0){
+					$("div.productUnit").show();
+					return;
+				}
+					
+				num = parseInt(num);
+				if(isNaN(num))
+					num= 1;
+				if(num<=0)
+					num = 1;
+				$(this).val(num);		
+				
+				
+				var begin = $("input.beginPrice").val();
+				var end = $("input.endPrice").val();
+				if(!isNaN(begin) && !isNaN(end)){
+					$("div.productUnit").hide();
+					$("div.productUnit").each(function(){
+						var price = $(this).attr("price");
+						price = new Number(price);
+						
+						if(price<=end && price>=begin)
+							$(this).show();
+					});
+				}
+				
+			});
+		});
+	</script>	
+	<div class="categorySortBar">
+	
+	<div class="nav">
+				<ul class="nav_list">
+					<li><a href="">电子数码</a></li>
+					<li><a href="index.html">首页</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+
+				</ul>
+	
+			</div>
+
+	</div>
+</div>	
+			<div> 
+			
+	<div class="categoryProducts">
+			<div :price="p.promotePrice" class="productUnit" v-for="p in c.products">
+				<div class="productUnitFrame">
+					<a :href="'product?pid='+p.id">
+						<img :src="'img/productSingle_middle/'+p.firstProductImage.id+'.jpg'" class="productImage" />
+					</a>
+					<span class="productPrice">{{p.promotePrice|formatMoneyFilter}} </span>
+					
+					<a :href="'product?pid='+p.id" class="productLink">
+						 {{p.name|subStringFilter(0,50)}}
+					</a>
+					
+					<a :href="'product?pid='+p.id" class="tmallLink">天猫专卖</a>
+		
+					<div class="show1 productInfo">
+						<span class="monthDeal ">月成交 <span class="productDealNumber">{{p.saleCount}}笔</span></span>
+						<span class="productReview">评价<span class="productReviewNumber">{{p.reviewCount}}</span></span>
+						
+					</div>
+				</div>
+			</div>
+			<div style="clear:both"></div>
+	</div>
+</div>	
+		</div>
+	</div>
+</div>	
+			<div> 
+	<div class="footer" id="footer" style="display: block;">
+		<div class="footer_ensure" id="footer_ensure">
+			<a href="#nowhere">
+				<img src="images/site/ensure.png" />
+			</a>
+		</div>
+	
+		<div class="horizontal_line">
+		</div>
+	
+		<div class="footer_desc" id="footer_desc">
+			<div class="descColumn">
+				<span class="descColumnTitle">购物指南</span>
+				<a href="#nowhere">免费注册</a>
+				<a href="#nowhere">开通支付宝</a>
+				<a href="#nowhere">支付宝充值</a>
+			</div>
+			<div class="descColumn">
+				<span class="descColumnTitle">天猫保障</span>
+				<a href="#nowhere">发票保障</a>
+				<a href="#nowhere">售后规则</a>
+				<a href="#nowhere">缺货赔付</a>
+			</div>
+			<div class="descColumn">
+				<span class="descColumnTitle">支付方式</span>
+				<a href="#nowhere">快捷支付</a>
+				<a href="#nowhere">信用卡</a>
+				<a href="#nowhere">蚂蚁花呗</a>
+				<a href="#nowhere">货到付款</a>
+			</div>
+			<div class="descColumn">
+				<span class="descColumnTitle">商家服务</span>
+				<a href="#nowhere">商家入驻</a>
+				<a href="#nowhere">商家中心</a>
+				<a href="#nowhere">天猫智库</a>
+				<a href="#nowhere">天猫规则</a>
+				<a href="#nowhere">物流服务</a>
+				<a href="#nowhere">喵言喵语</a>
+				<a href="#nowhere">运营服务</a>
+			</div>
+			<div class="descColumn">
+				<span class="descColumnTitle">手机天猫</span>
+				<a href="#nowhere"><img src="images/site/ma.png" /></a>
+			</div>
+	
+		</div>
+	
+		<div style="clear:both">
+	
+		</div>
+	
+	
+	
+	
+		<div class="copyright" id="copyright">
+			<div class="coptyrightMiddle">
+				<img class="cateye" id="cateye" src="images/site/cateye.png" />
+				<div class="white_link">
+					<a href="#nowhere" style="padding-left:0px">关于天猫</a>
+					<a href="#nowhere"> 帮助中心</a>
+					<a href="#nowhere">开放平台</a>
+					<a href="#nowhere">  诚聘英才</a>
+					<a href="#nowhere">联系我们</a>
+					<a href="#nowhere">网站合作</a>
+					<a href="#nowhere">法律声明</a>
+					<a href="#nowhere">知识产权</a>
+					<a href="#nowhere">  廉正举报	</a>
+				</div>
+				<div class="white_link">
+					<a href="#nowhere" style="padding-left:0px"> 阿里巴巴集团</a><span class="slash">|</span>
+					<a href="#nowhere"> 淘宝网</a><span class="slash">|</span>
+					<a href="#nowhere">天猫 </a><span class="slash">|</span>
+					<a href="#nowhere">  聚划算</a><span class="slash">|</span>
+					<a href="#nowhere">全球速卖通</a><span class="slash">|</span>
+					<a href="#nowhere">阿里巴巴国际交易市场</a><span class="slash">|</span>
+					<a href="#nowhere">1688</a><span class="slash">|</span>
+					<a href="#nowhere">阿里妈妈</a><span class="slash">|</span>
+					<a href="#nowhere">  阿里旅行·去啊	</a><span class="slash">|</span>
+					<a href="#nowhere">  阿里云计算	</a><span class="slash">|</span>
+					<a href="#nowhere">  阿里通信 	</a><span class="slash">|</span>
+					<a href="#nowhere">  YunOS	</a><span class="slash">|</span>
+					<a href="#nowhere">  阿里旅行·去啊	</a><span class="slash">|</span>
+					<a href="#nowhere">   万网	</a><span class="slash">|</span>
+					<a href="#nowhere">  高德	</a><span class="slash">|</span>
+					<a href="#nowhere"> 优视 	</a><span class="slash">|</span>
+					<a href="#nowhere">  友盟	</a><span class="slash">|</span>
+					<a href="#nowhere">  虾米	</a><span class="slash">|</span>
+					<a href="#nowhere">  天天动听	</a><span class="slash">|</span>
+					<a href="#nowhere">  来往	</a><span class="slash">|</span>
+					<a href="#nowhere">  钉钉	</a><span class="slash">|</span>
+					<a href="#nowhere">  支付宝 		</a>
+				</div>
+	
+				<div class="license">
+					<span>增值电信业务经营许可证： 浙B2-20110446</span>
+					<span>网络文化经营许可证：浙网文[2015]0295-065号</span>
+					<span>互联网医疗保健信息服务 审核同意书 浙卫网审【2014】6号 </span>
+					<span>互联网药品信息服务资质证书编号：浙-（经营性）-2012-0005</span>
+					<div class="copyRightYear">&copy; 2003-2016 TMALL.COM 版权所有</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+<div> 
+</div></div>	
+		</div>
+	
+
+</body></html>
