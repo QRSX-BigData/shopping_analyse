@@ -29,7 +29,7 @@ public class goodforeachController {
 	public String shop3(Model m,int id) throws Exception {
 		Goods shop=goodsmapper.findsome(id);
 		m.addAttribute("shop", shop);
-		return "shop3";
+		return "shop3"; 
 	}
 	@GetMapping("/shop04")
 	public String shop4(Model m,int id) throws Exception {
