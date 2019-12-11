@@ -13,5 +13,7 @@ public interface GoodsMapper {
 	List<Goods> findall();
 	@Select("select count(*) from goods_info")
 	int count();
+	@Select("select * from goods_info where goods_info.goods_id_key = #{id}")
+	Goods findsome(int id);
 	
 }
