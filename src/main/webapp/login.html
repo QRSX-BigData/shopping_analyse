@@ -118,8 +118,6 @@
                 login:function(event){
                     this.username = document.getElementById("username").value;
                     this.password = document.getElementById("password").value;
-                    console.log(this.username);
-                    console.log(this.password);
                     var url = "login1";
                     axios.post(url,this.account).then(function(response){
                         if(response.data=='success'){
