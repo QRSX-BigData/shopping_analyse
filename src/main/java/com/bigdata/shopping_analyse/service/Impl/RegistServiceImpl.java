@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class registServiceImpl implements RegistService {
+public class RegistServiceImpl implements RegistService {
     @Autowired RegistMapper registMapper;
 
     @Override
