@@ -13,38 +13,21 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 
 @RestController
+//注册的Controller层
 public class RegistController {
     @Autowired RegistService registService;
     //注册
     @RequestMapping("/register")
     public String add(@RequestBody Account s) throws Exception {
-        //userService.get方法查出用户名为输入的用户名的个数，如果是0个就允许插入
-        int su =registService.get(s);
-        if(su==0){
-            String md5PassWord = DigestUtils.md5DigestAsHex(s.getPassword().getBytes());
-            s.setPassword(md5PassWord);
+        if(registService.get(s)==0){
+            //将密码设置为MD5加密
+            s.setPassword(DigestUtils.md5DigestAsHex(s.getPassword().getBytes()));
+            //添加到数据库中
             registService.add(s);
             return "success";
-        }else return "false";
-    }
-    //登陆
-    @RequestMapping("/login1")
-    public String select(@RequestBody Account account) throws Exception{
-        String username = account.getUsername();
-        String userpwd = DigestUtils.md5DigestAsHex(account.getPassword().getBytes());
-        System.out.println(username);
-        System.out.println(userpwd);
-        Account a = registService.select(username,userpwd);
-        if (a==null){
-            return "false";
+
         }else{
-            return "success";
+            return "false";
         }
     }
-
-
-
-
-
-
 }
