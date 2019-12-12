@@ -3,6 +3,9 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>购物车</title>
+			<script src="./js/jquery.min.js"></script>
+	<script src="./js/vue.min.js"></script>
+	<script src="./js/axios.min.js"></script>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 		<link rel="stylesheet" href="style.css">
 		<!-- normalize 初始化  针对浏览器-->
@@ -26,6 +29,7 @@ background-color:
     height: 48px;
     border: none;
 }
+	
 	</style>
 		
 	</head>
@@ -144,9 +148,12 @@ background-color:
 				<div class="info">
 					<div class="sku_name">
 
+					
+					
 						<p>
 							<tr th:each="c:${shop}">
 							<td th:text="${c.goods_name}"></td>
+							
 								</tr> </p>
 						
 						
@@ -223,4 +230,5 @@ background-color:
 
 		
 	</body>
+
 </html>
