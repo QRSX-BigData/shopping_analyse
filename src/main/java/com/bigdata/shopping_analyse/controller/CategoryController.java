@@ -17,8 +17,9 @@ public class CategoryController {
 	
 	@GetMapping("/fenlei1")
 	public String category1(Model m,int id) throws Exception {
-		List<Goods> shop=goodsmapper.findall();
+		List<Goods> shop=goodsmapper.findCategory(id);
 		m.addAttribute("shop", shop);
+		
 		return "category1";
 	}
 	
