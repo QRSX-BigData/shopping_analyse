@@ -3,6 +3,9 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>购物车</title>
+			<script src="./js/jquery.min.js"></script>
+	<script src="./js/vue.min.js"></script>
+	<script src="./js/axios.min.js"></script>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 		<link rel="stylesheet" href="style.css">
 		<!-- normalize 初始化  针对浏览器-->
@@ -26,6 +29,8 @@ background-color:
     height: 48px;
     border: none;
 }
+
+	
 	</style>
 		
 	</head>
@@ -41,9 +46,9 @@ background-color:
 				</ul>
 				<ul class="fr">
 					<li>
-						<a href="#">你好，请登录</a>
+						<a href="#">你不好，请出门左转</a>
 						&nbsp;
-						<a href="#" class="style-red">注册</a>
+						<a href="#" class="style-red">或者你可以注册</a>
 					</li>
 					<li class="spacer"></li>
 					<li>
@@ -76,6 +81,7 @@ background-color:
 					<li style="position: relative;">
 						<a href="#">
 							手机京东
+
 						</a>
 						<div class="erweima">
 							<img src="images/erweima.png" alt="">
@@ -90,12 +96,8 @@ background-color:
 		<div class="w header">
 			<div class="logo">
 				<a href=""></a>
-
-				<h2>购物车</h2>
-
-
+				<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;购物车</h2>
 			</div>
-			
 			<div class="search">
 				<form action="">
 					<input class="txt" type="text">
@@ -112,19 +114,22 @@ background-color:
 				<ul class="nav_list">
 					<li><a href="">全部分类</a></li>
 					<li><a href="">首页</a></li>
-					<li><a href="">中兴手机</a></li>
-					<li><a href="">中兴笔记本</a></li>
-					<li><a href="">小家电</a></li>
-					<li><a href="">盒子路由</a></li>
-					<li><a href="">智能酷玩</a></li>
-					<li><a href="">数码配件</a></li>
-					<li><a href="">生活周边</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
 
-					
 				</ul>
 	
 			</div>
-			<div class="guid">
+			<div class="guid" th:object="${shop}">
 				<ul class="guid_list">
 					<li><a href="">手机通讯</a></li>
 					<p>&gt;</p>
@@ -132,7 +137,8 @@ background-color:
 					<p>&gt;</p>
 					<li><a href="">努比亚</a></li>
 					<p>&gt;</p>
-					<li><a href="">中兴nubia</a></li>
+					<li th:text="*{goods_name}"><a href=""></a></li>
+
 				</ul>
 
 			</div>
@@ -141,13 +147,8 @@ background-color:
 
 				</div>
 				<div class="info">
-					<div class="sku_name">
-
-						<p>
-							<tr th:each="c:${shop}">
-							<td th:text="${c.goods_name}"></td>
-								</tr> </p>
-						
+					<div class="sku_name" th:object="${shop}">
+					<p th:text="*{goods_name}"></p>
 						
 						
 					</div>
@@ -158,20 +159,15 @@ background-color:
 
 					</div>
 					<div class="price">
-						<div class="dd1">
+						<div class="dd1" th:object="${shop}">
 							<p class="p1">京东价</p>
 							<p class="p2">￥</p>
-							<p class="p3" >
-							<tr th:each="c:${shop}">
-							<td th:text="${c.goods_price}"></td>
-								</tr>
+							<p class="p3" th:text="*{goods_price}">
+							
 							</p>
-							<p>
-							<em>&nbsp;&nbsp;&nbsp;&nbsp;库存
-							<td th:each="c:${shop}" th:text="${c.goods_num}">
-								</td>
-								</em>
-						</p>
+							<p class="p4" th:text="'库存：'+*{goods_num}">
+							</p>
+
 						</div>
 						<div class="summary">
 							<p>促&nbsp;销&nbsp;满额返券&nbsp;购买此商品满10元返配件优惠券 详情 </p>
@@ -208,9 +204,9 @@ background-color:
 						</div>
 
 					</div>
-										<div>
+					<div th:object="${shop}">
 					<button class="fifth_div_7_button_1">立即购买</button>
-					<button class="fifth_div_7_button_1"><a href="addtocar?id=1">加入购物车</a></button>
+					<button class="fifth_div_7_button_1"><a th:href="'addtocar?id='+*{goods_id_key}">加入购物车</a></button>
 					</div>
 
 				</div>
@@ -222,4 +218,5 @@ background-color:
 
 		
 	</body>
+
 </html>
