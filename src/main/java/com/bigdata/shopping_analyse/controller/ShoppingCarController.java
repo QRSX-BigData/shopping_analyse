@@ -28,7 +28,8 @@ public class ShoppingCarController {
 		int userid = (int) session.getAttribute("userid");
 		System.out.println("userid:"+userid);
 		
-		//将userid goodsid 插入购物车数据库
+		// 将userid goodsid 插入购物车数据库
+		// 插入之前判断商品id是否已经存在，如果存在就不插入
 		ShoppingCar s =new ShoppingCar();
 		s.setUser_id(userid);
 		s.setGoods_id(id);//我点击添加购物车 需要返回的数据就是这个  id
