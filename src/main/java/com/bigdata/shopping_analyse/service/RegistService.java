@@ -1,7 +1,6 @@
 package com.bigdata.shopping_analyse.service;
 
 import com.bigdata.shopping_analyse.pojo.Account;
-import com.bigdata.shopping_analyse.pojo.User;
 
 public interface RegistService {
     public int add(Account account);
