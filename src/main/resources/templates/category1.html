@@ -10,6 +10,9 @@
 	<script src="js/vue/2.5.16/vue.min.js"></script>
 	<script src="js/axios/axios.min.js"></script>
 	<script src="js/moment/2.22.2/moment.js"></script>
+	<style>
+	
+	</style>
 	<link href="css/fore/style.css" rel="stylesheet" />
 	
 	<link rel="stylesheet" href="css/category3.css"/>
@@ -21,7 +24,8 @@
 			<nav class="top">
 	<a href="/tmall_springboot">
 		<span class=" glyphicon glyphicon-home redColor" style="color:#C40000;margin:0px"></span>
-		京东首页
+
+		<a href="main.html" >京东首页</a>		
 	</a>
 
 	<span>欢迎来京东</span>
@@ -29,21 +33,21 @@
 	
 	
 	<span>
-		<a href="login.html">请登录</a>
-		<a href="regist.html">免费注册</a>
+		<a href="login.html" >请登录</a>				
+		<a href="regist.html" >免费注册</a>
 	</span>
 
 
 	<span class="pull-right">
 			<a href="bought">我的订单</a>
-			<a href="cart">
+			<a href="car。html">
 			<span class=" glyphicon glyphicon-shopping-cart redColor" style="color:#C40000;margin:0px"></span>
 			购物车<strong>0</strong>件</a>
 	</span>
 </nav>	
 			<div class=""> 
 	<a href="/tmall_springboot">
-		<img class="logo" id="logo" src="images/site/logo.gif" />
+		<img class="logo" id="logo" src="images/logo.gif" />
 	</a>
 	<form action="search" method="get">
 		<div class="searchDiv">
@@ -59,93 +63,45 @@
 	<title>商品分类</title>	
 	<div id="category">
 		<div class="categoryPageDiv">
-			<img :src="'img/category/'+c.id+'.jpg'" v-if="c.id!=null" />
-			<div> 
 		
 	<div class="categorySortBar">
 	
-	<div class="nav">
+			<div class="nav">
 				<ul class="nav_list">
 					<li><a href="">电子数码</a></li>
-					<li><a href="index.html">首页</a></li>
-					
+					<li><a href="main.html">首页</a></li>
 				</ul>
-	
 			</div>
+	</div>
+		
+			<br>
+		<table border='1' cellspacing='0' style="text-align: center" align="center"  >
+			<tr  height = "50px">
+				<td width="300px">商品名</td>
+				<td width="300px">商品价格</td>
+				<td width="300px">商品数量</td>
+				<td width="300px">商品详情</td>
+			</tr>
 
-	</div>
-</div>	
-			<div> 
-		
-		
-			
-	<div class="categoryProducts">
-			<div :price="p.promotePrice" class="productUnit" v-for="p in c.products">
-				<div class="productUnitFrame">
-					<a href=" shop01?id=1">
-						<img :src=" " class="productImage" />
-					</a>
-					<br>
-					<br>
-					<span class="productPrice"><tr th:each="c:${category}">
-						<td th:text="${c.goods_name}"></td>
-					</tr></span>
-					<a href="shop01?id=1 " class="productLink">
-						    <tr th:each="c:${category}">
-						<td th:text="${c.goods_price}"></td>
-						<td th:text="${c.goods_price}"></td>
-						<td th:text="${c.goods_price}"></td>
-					</tr>
-					</a>
+			<tr th:each="c:${shop}"  height = "50px">
+			  
+				<td th:text="${c.goods_name}"></td>
+				<td th:text="${c.goods_price}"></td>
+				<td th:text="${c.goods_num}"></td>
 				
-					
-					
-					<div class="show1 productInfo">
-					</div>
-				</div>
-			</div>
-			
-			<div :price="p.promotePrice" class="productUnit" v-for="p in c.products">
-				<div class="productUnitFrame">
-					<a :href=" ">
-						<img :src=" " class="productImage" />
-					</a>
-					<br>
-					<br>
-					<span class="productPrice">中兴Nubia</span>
-					<a href="shop01?id=1">中兴nubia</a>
-					<a :href="'product?pid='+p.id" class="productLink">
-						 goods_price
-					</a>
-					<a :href=" " class="tmallLink">京东专卖</a>
-					<div class="show1 productInfo">
-					</div>
-				</div>
-			</div>
-			
-			<div :price="p.promotePrice" class="productUnit" v-for="p in c.products">
-				<div class="productUnitFrame">
-					<a :href=" ">
-						<img :src=" " class="productImage" />
-					</a>
-					<br>
-					<br>
-					<span class="productPrice">一加五</span>
-					<a :href="'product?pid='+p.id" class="productLink">
-						 goods_price
-					</a>
-					<a :href=" " class="tmallLink">京东专卖</a>
-					<div class="show1 productInfo">
-					</div>
-				</div>
-			</div>
-			<div style="clear:both"></div>
-	</div>
-</div>	
+				<td > <a th:href="'shop01?id='+ ${c.goods_id_key}" >详情  </a> </td>
+				 	 
+			</tr> 
+		</table> 
+		<br>
+		<br>
+		<br>	
 		</div>
+	
 	</div>
 </div>	
-			<div> 
+	
+	<div> 
 	<div class="footer" id="footer" style="display: block;">
 		<div class="footer_ensure" id="footer_ensure">
 			<a href="#nowhere">
@@ -164,7 +120,7 @@
 				<a href="#nowhere">支付宝充值</a>
 			</div>
 			<div class="descColumn">
-				<span class="descColumnTitle">天猫保障</span>
+				<span class="descColumnTitle">京东保障</span>
 				<a href="#nowhere">发票保障</a>
 				<a href="#nowhere">售后规则</a>
 				<a href="#nowhere">缺货赔付</a>
@@ -180,14 +136,14 @@
 				<span class="descColumnTitle">商家服务</span>
 				<a href="#nowhere">商家入驻</a>
 				<a href="#nowhere">商家中心</a>
-				<a href="#nowhere">天猫智库</a>
-				<a href="#nowhere">天猫规则</a>
+				<a href="#nowhere">京东智库</a>
+				<a href="#nowhere">京东规则</a>
 				<a href="#nowhere">物流服务</a>
 				<a href="#nowhere">喵言喵语</a>
 				<a href="#nowhere">运营服务</a>
 			</div>
 			<div class="descColumn">
-				<span class="descColumnTitle">手机天猫</span>
+				<span class="descColumnTitle">手机京东</span>
 				<a href="#nowhere"><img src="images/site/ma.png" /></a>
 			</div>
 	
@@ -204,7 +160,7 @@
 			<div class="coptyrightMiddle">
 				<img class="cateye" id="cateye" src="images/site/cateye.png" />
 				<div class="white_link">
-					<a href="#nowhere" style="padding-left:0px">关于天猫</a>
+					<a href="#nowhere" style="padding-left:0px">关于京东</a>
 					<a href="#nowhere"> 帮助中心</a>
 					<a href="#nowhere">开放平台</a>
 					<a href="#nowhere">  诚聘英才</a>
@@ -217,7 +173,7 @@
 				<div class="white_link">
 					<a href="#nowhere" style="padding-left:0px"> 阿里巴巴集团</a><span class="slash">|</span>
 					<a href="#nowhere"> 淘宝网</a><span class="slash">|</span>
-					<a href="#nowhere">天猫 </a><span class="slash">|</span>
+					<a href="#nowhere">京东 </a><span class="slash">|</span>
 					<a href="#nowhere">  聚划算</a><span class="slash">|</span>
 					<a href="#nowhere">全球速卖通</a><span class="slash">|</span>
 					<a href="#nowhere">阿里巴巴国际交易市场</a><span class="slash">|</span>
