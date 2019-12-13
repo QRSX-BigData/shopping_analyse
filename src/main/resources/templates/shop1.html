@@ -81,7 +81,6 @@ background-color:
 							<img src="images/erweima.png" alt="">
 						</div>
 					</li>
-				
 				</ul>
 			</div>
 		</div>	
@@ -92,15 +91,12 @@ background-color:
 				<a href=""></a>
 				<h2>购物车</h2>
 			</div>
-			
 			<div class="search">
 				<form action="">
 					<input class="txt" type="text">
 					<input class="but" type="submit" name="" value="搜索">
 				</form>
-
 			</div>
-
 		</div>
 		<!--header end-->
 		<!--shop body start-->
@@ -116,9 +112,8 @@ background-color:
 					<li><a href="">智能酷玩</a></li>
 					<li><a href="">数码配件</a></li>
 					<li><a href="">生活周边</a></li>
-					<li><a href="">${shop.goods_price}</a></li>
 				</ul>
-	
+
 			</div>
 			<div class="guid">
 				<ul class="guid_list">
@@ -130,22 +125,17 @@ background-color:
 					<p>&gt;</p>
 					<li><a href="">中兴nubia</a></li>
 				</ul>
-
 			</div>
 			<div class="shop_body">
 				<div class="show">
-
 				</div>
 				<div class="info">
 					<div class="sku_name">
-
 						<p>
 							<tr th:each="c:${shop}">
 							<td th:text="${c.goods_name}"></td>
-								</tr> </p>
-						
-						
-						
+								</tr> 
+						</p>
 					</div>
 					<div></div>
 					<div class="hide">
@@ -198,24 +188,17 @@ background-color:
 							<div class="color_info">
 								<div class="color_select">
 									<a href="#none">黑</a>
-
 								</div>
 							</div>
 						</div>
-
 					</div>
-										<div>
+					<div>
 					<button class="fifth_div_7_button_1">立即购买</button>
-					<button class="fifth_div_7_button_1"><a href="addtocar?id=1">加入购物车</a></button>
+					<button class="fifth_div_7_button_1"><a href="addtocar?id=${shop.goods_id_key}">加入购物车</a></button>
+					<td th:text="${shop.goods_id_key}"></td>
 					</div>
-
 				</div>
-
 			</div>
 		</div>
-
-
-
-		
 	</body>
 </html>
