@@ -14,14 +14,11 @@ public class GoodsController {
 	@RequestMapping("/goodsList") 
 	public String listCategory(Model m) throws Exception {
 		List<Goods> shop=goodsmapper.findall();
-//		for(Goods s : shop) {
-//			System.out.println(s.getGoods_id_key()+s.getGoods_name());
-//		}                                                                                                                                                                                                                                                                                                                                                      
-//		System.out.println(goodsmapper.count()); 
 		m.addAttribute("shop", shop);
 		return "cs_main";
 	}
 	 
+	
 	@RequestMapping("/main") 
 	public String listmain(Model m) throws Exception {
 		List<Goods> shop=goodsmapper.findall();

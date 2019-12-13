@@ -3,6 +3,9 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>购物车</title>
+			<script src="./js/jquery.min.js"></script>
+	<script src="./js/vue.min.js"></script>
+	<script src="./js/axios.min.js"></script>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 		<link rel="stylesheet" href="style.css">
 		<!-- normalize 初始化  针对浏览器-->
@@ -26,6 +29,7 @@ background-color:
     height: 48px;
     border: none;
 }
+	
 	</style>
 		
 	</head>
@@ -90,7 +94,11 @@ background-color:
 		<div class="w header">
 			<div class="logo">
 				<a href=""></a>
+<<<<<<< HEAD
 				<h2>购物车</h2>
+=======
+				<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+>>>>>>> branch 'master' of https://github.com/QRSX-BigData/shopping_analyse.git
 			</div>
 			
 			<div class="search">
@@ -98,9 +106,7 @@ background-color:
 					<input class="txt" type="text">
 					<input class="but" type="submit" name="" value="搜索">
 				</form>
-
 			</div>
-
 		</div>
 		<!--header end-->
 		<!--shop body start-->
@@ -141,9 +147,12 @@ background-color:
 				<div class="info">
 					<div class="sku_name">
 
+					
+					
 						<p>
 							<tr th:each="c:${shop}">
 							<td th:text="${c.goods_name}"></td>
+							
 								</tr> </p>
 						
 						
@@ -220,4 +229,5 @@ background-color:
 
 		
 	</body>
+
 </html>
