@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>个人注册</title>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/vue.min.js"></script>
+	<script src="./js/axios.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/userInformation.css"/>
+    <link rel="icon" type="image/x-ico" href="images/bb.png"/>
+
+
+</head>
+
+<body>
+<div>
+
+		<!-- =====1、顶部====== -->
+			<div id="header">
+				<div class="images/h-top">
+				<!-- 图标logo -->
+				<img src="images/logo.png">
+				</div>
+				<!-- 已有账号 -->
+				<p>已完善？<a href="index.html">返回主页</a></p>
+			</div>
+			
+			<!-- =====2、中间内容 -->
+			<div id="app">
+			<div id="content">
+				<div class="input_div">
+					<div class="input-middle">
+						<input type="text" name="username" class="username" id="username" value="" v-model="information.username" placeholder=" 手机号" @blur="phoneFunction" >
+						<span v-model="lost" v-if="hide" id="address">{{lost}}</span>
+						<br><br>
+						<input type="password" name="password" class="password" id="password"  v-model="information.password" placeholder=" 地址" @blur="addressFunction">
+						<span v-model="lostpass" v-if="hidepass" id="phone">{{lostpass}}</span>
+						<br><br><br><br><br><br><br>
+						<span id="tishi"></span>
+					
+					</div>
+				
+					<div class="info-bottom">
+						<button class="xiayi" type="button" id="button1"  @click="add">注册</button>
+						</div>
+						<div class="info-bottomer">
+						<img class="qiyetu"  src="images/qiye.png">
+						<a class="qiye" href="">企业用户注册</a>
+						<img  class="haiwaitu" src="images/haiwai.png">
+						<a class="haiwai" href="">海外用户注册</a>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			
+			<!--=====3、底部=====-->
+        <div id="footer">
+            <div class="other"> 
+                <a href="https://www.jd.com/" class="about">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="http://about.jd.com/contact" class="call">联系我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="http://zhaopin.jd.com/home;jsessionid=0D8472A29BF72DC239E3DE9FA99D04A9.s1" class="people">人才招聘</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="https://www.jd.com/" class="peo">商家入驻</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://www.jd.com/" class="tall">广告服务</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://app.jd.com/" class="phone">手机京东</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://club.jd.com/links.aspx" class="friend">友情链接</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://media.jd.com/" class="shop">销售联盟</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://sale.jd.com/act/n0hAvqy5CW8.html" class="club">京东社区</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                <a href="https://gongyi.jd.com/" class="love">京东公益</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="https://www.joybuy.com/" class="english">English Site</a> 
+            </div> 
+            <div class="versions"> 
+                <span>Copyright © 2004-2018 京东JD.com 版权所有</span> 
+            </div> 
+    
+        </div>
+</div>
+
+
+
+</body>
+<script type="text/javascript">
+	var information = {
+		registerdata:{
+		phone: '',
+		address: '',
+		}
+	};
+	var passw = {
+	password:{
+	pass:''
+	}
+	}
+	var vue = new Vue({
+		el:'#app',
+		data:{
+		register,
+		passw,
+		lost:'',
+		lostpass:'',
+		hide:false,
+		hidepass:false
+		},
+		methods:{
+<!--			查看账号是否为空-->
+			phoneFunction:function(){
+			if(document.getElementById("username").value==''){
+				this.hide=true;
+				this.lost="账号不能为空";
+			}else{
+				this.hide=false;
+			}
+			},
+<!--			查看密码是否为空-->
+			addressFunction:function(){
+			if(document.getElementById("password").value==''){
+				this.hidepass=true;
+				this.lostpass="密码不能为空";
+			}else{
+				this.hidepass=false;
+			}
+			},
+			add:function(event){
+			this.password = document.getElementById("password").value;
+			this.pass = document.getElementById("passwordsecond").value;
+				if (vue.password===vue.pass && vue.password!='' && vue.username!='') {
+				var url = "register";
+				axios.post(url,this.register).then(function(response){
+					if (response.data=='success') {<!-- response.data用来接收Controller返回的东西 -->
+						window.location.href='login.html';
+					}else{
+						document.getElementById("username").value='';
+						alert("用户名已存在请重新输入！");
+					}
+				});
+			}else{
+				alert("密码不一致请重新输入");
+				document.getElementById("passwordsecond").value='';
+			}
+			}
+		}
+	});
+</script>
+</html>
