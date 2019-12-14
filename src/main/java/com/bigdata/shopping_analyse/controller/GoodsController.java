@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.bigdata.shopping_analyse.mapper.GoodsMapper;
 import com.bigdata.shopping_analyse.pojo.Goods;
 
+//全部商品展示
 @Controller
 public class GoodsController { 
 	@Autowired GoodsMapper goodsmapper;
@@ -18,7 +19,7 @@ public class GoodsController {
 		return "cs_main";
 	}
 	 
-	
+//跳转到主页面
 	@RequestMapping("/main") 
 	public String listmain(Model m) throws Exception {
 		List<Goods> shop=goodsmapper.findall();
