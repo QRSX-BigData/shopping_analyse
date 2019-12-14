@@ -17,27 +17,12 @@ public class CategoryController {
 	
 	@GetMapping("/fenlei1")
 	public String category1(Model m,int id) throws Exception {
-		List<Goods> category = goodsmapper.findCategory(id);
-				System.out.println(id);
-		for(Goods d : category){
-			System.out.println(d);
-		}
-		m.addAttribute("category", category);
+		List<Goods> shop=goodsmapper.findCategory(id);
+		m.addAttribute("shop", shop);
+		
 		return "category1";
 	}
 	
-	@GetMapping("/fenlei2")
-	public String category2(Model m,int id) throws Exception {
-		Goods shop=goodsmapper.findsome(id);	
-		m.addAttribute("category", shop);
-		return "category2";
-	}
 	
 
-//	@GetMapping("/shop01")
-//	public String shop(Model m,int id) throws Exception {
-//		Goods shop=goodsmapper.findsome(id);	
-//		m.addAttribute("shop", shop);
-//		return "shop1";
-//	}
 }
