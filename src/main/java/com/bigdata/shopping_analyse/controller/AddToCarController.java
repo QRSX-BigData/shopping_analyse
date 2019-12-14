@@ -9,13 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bigdata.shopping_analyse.mapper.GoodsMapper;
-import com.bigdata.shopping_analyse.mapper.ShoppingCarMapper;
+import com.bigdata.shopping_analyse.mapper.AddToCarMapper;
 import com.bigdata.shopping_analyse.pojo.Goods;
 import com.bigdata.shopping_analyse.pojo.ShoppingCar;
 
 @Controller
-public class ShoppingCarController {
-	@Autowired ShoppingCarMapper shoppingcarmapper;
+public class AddToCarController {
+	@Autowired AddToCarMapper shoppingcarmapper;
 	@Autowired GoodsMapper goodsmapper;
 	
 	//添加商品到购物车
