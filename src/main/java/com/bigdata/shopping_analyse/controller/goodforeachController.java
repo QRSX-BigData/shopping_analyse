@@ -18,6 +18,4 @@ public class goodforeachController {
 		//m.addAttribute("id", id);
 		return "shop1";
 	}
-
-
 }
