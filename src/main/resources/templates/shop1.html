@@ -119,19 +119,6 @@ background-color:
 					<li><a href="">智能酷玩</a></li>
 					<li><a href="">数码配件</a></li>
 					<li><a href="">生活周边</a></li>
-
-					<li><a href="">大米</a></li>
-					<li><a href="">大米</a></li>
-					<li><a href="">大米</a></li>
-					<li><a href="">大米</a></li>
-					<li><a href="">大米</a></li>
-					<li><a href="">大米</a></li>
-					<li><a href="">大米</a></li>
-					<li><a href="">大米</a></li>
-					<li><a href="">大米</a></li>
-					<li><a href="">大米</a></li>
-					<li><a href="">大米</a></li>
-
 				</ul>
 
 			</div>
@@ -153,17 +140,14 @@ background-color:
 				<div class="info">
 
 					<div class="sku_name">
-						<p>
+						<!-- <p>
 							<tr th:each="c:${shop}">
 							<td th:text="${c.goods_name}"></td>
 								</tr> 
-						</p>
+						</p> -->
 
 					<div class="sku_name" th:object="${shop}">
 					<p th:text="*{goods_name}"></p>
-						
-						
-
 					</div>
 					<div></div>
 					<div class="hide">
@@ -175,10 +159,9 @@ background-color:
 						<div class="dd1" th:object="${shop}">
 							<p class="p1">京东价</p>
 							<p class="p2">￥</p>
-							<p class="p3" th:text="*{goods_price}">
+							<p class="p3" th:text="*{goods_price}"></p>
 							
-							</p>
-							<p class="p4" th:text="'库存：'+*{goods_num}">
+							<p class="p4" th:text="'&nbsp;&nbsp;&nbsp;&nbsp;库存：'+*{goods_num}">
 							</p>
 
 						</div>
