@@ -1,7 +1,6 @@
 package com.bigdata.shopping_analyse.mapper;
 
 import com.bigdata.shopping_analyse.pojo.Account;
-import com.bigdata.shopping_analyse.pojo.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

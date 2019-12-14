@@ -1,7 +1,8 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 	<head> 
 	<script src="js/jquery.min.js"></script>
 	<link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet" />
@@ -113,7 +114,7 @@
 			<nav class="top">
 	<a href="/tmall_springboot">
 		<span class=" glyphicon glyphicon-home redColor" style="color:#C40000;margin:0px"></span>
-		天猫首页
+		京东首页
 	</a>
 
 	<span>欢迎来京东</span>
@@ -121,8 +122,8 @@
 	
 	
 	<span>
-		<a href="login">请登录</a>
-		<a href="register">免费注册</a>
+		<a href="login.html">请登录</a>
+		<a href="regist.html">免费注册</a>
 	</span>
 
 
@@ -180,50 +181,19 @@
 		})
 	</script>
 	
-	<title>模仿天猫官网-{{c.name}}</title>	
+	<title>商品分类</title>	
 	<div id="category">
 		<div class="categoryPageDiv">
 			<img :src="'img/category/'+c.id+'.jpg'" v-if="c.id!=null" />
 			<div> 
-	<script>
-		$(function(){
-			$("input.sortBarPrice").keyup(function(){
-				var num= $(this).val();
-				if(num.length==0){
-					$("div.productUnit").show();
-					return;
-				}
-					
-				num = parseInt(num);
-				if(isNaN(num))
-					num= 1;
-				if(num<=0)
-					num = 1;
-				$(this).val(num);		
-				
-				
-				var begin = $("input.beginPrice").val();
-				var end = $("input.endPrice").val();
-				if(!isNaN(begin) && !isNaN(end)){
-					$("div.productUnit").hide();
-					$("div.productUnit").each(function(){
-						var price = $(this).attr("price");
-						price = new Number(price);
-						
-						if(price<=end && price>=begin)
-							$(this).show();
-					});
-				}
-				
-			});
-		});
-	</script>	
+		
 	<div class="categorySortBar">
 	
 	<div class="nav">
 				<ul class="nav_list">
 					<li><a href="">电子数码</a></li>
 					<li><a href="index.html">首页</a></li>
+					<!-- <li><a href="">大米</a></li>
 					<li><a href="">大米</a></li>
 					<li><a href="">大米</a></li>
 					<li><a href="">大米</a></li>
@@ -234,8 +204,7 @@
 					<li><a href="">大米</a></li>
 					<li><a href="">大米</a></li>
 					<li><a href="">大米</a></li>
-					<li><a href="">大米</a></li>
-
+ -->
 				</ul>
 	
 			</div>
@@ -247,21 +216,51 @@
 	<div class="categoryProducts">
 			<div :price="p.promotePrice" class="productUnit" v-for="p in c.products">
 				<div class="productUnitFrame">
-					<a :href="'product?pid='+p.id">
-						<img :src="'img/productSingle_middle/'+p.firstProductImage.id+'.jpg'" class="productImage" />
+					<a :href=" ">
+						<img :src=" " class="productImage" />
 					</a>
-					<span class="productPrice">{{p.promotePrice|formatMoneyFilter}} </span>
-					
-					<a :href="'product?pid='+p.id" class="productLink">
-						 {{p.name|subStringFilter(0,50)}}
+					<br>
+					<br>
+					<span class="productPrice">goods_name</span>
+					<a :href=" " class="productLink">
+						 goods_price
 					</a>
-					
-					<a :href="'product?pid='+p.id" class="tmallLink">天猫专卖</a>
-		
+					<a :href=" " class="tmallLink">京东专卖</a>
 					<div class="show1 productInfo">
-						<span class="monthDeal ">月成交 <span class="productDealNumber">{{p.saleCount}}笔</span></span>
-						<span class="productReview">评价<span class="productReviewNumber">{{p.reviewCount}}</span></span>
-						
+					</div>
+				</div>
+			</div>
+			
+			<div :price="p.promotePrice" class="productUnit" v-for="p in c.products">
+				<div class="productUnitFrame">
+					<a :href=" ">
+						<img :src="https://img.alicdn.com/bao/uploaded/i4/292642853/O1CN01qcsUVl1WwiXpBdAdM_!!292642853.jpg" class="productImage" />
+					</a>
+					<br>
+					<br>
+					<span class="productPrice">中兴Nubia</span>
+					<a :href="'product?pid='+p.id" class="productLink">
+						 goods_price
+					</a>
+					<a :href=" " class="tmallLink">京东专卖</a>
+					<div class="show1 productInfo">
+					</div>
+				</div>
+			</div>
+			
+			<div :price="p.promotePrice" class="productUnit" v-for="p in c.products">
+				<div class="productUnitFrame">
+					<a :href=" ">
+						<img :src="https://img.alicdn.com/bao/uploaded/i4/292642853/O1CN01qcsUVl1WwiXpBdAdM_!!292642853.jpg" class="productImage" />
+					</a>
+					<br>
+					<br>
+					<span class="productPrice">一加五</span>
+					<a :href="'product?pid='+p.id" class="productLink">
+						 goods_price
+					</a>
+					<a :href=" " class="tmallLink">京东专卖</a>
+					<div class="show1 productInfo">
 					</div>
 				</div>
 			</div>

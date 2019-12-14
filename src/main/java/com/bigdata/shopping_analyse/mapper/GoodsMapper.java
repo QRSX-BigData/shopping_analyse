@@ -15,5 +15,8 @@ public interface GoodsMapper {
 	int count();
 	@Select("select * from goods_info where goods_info.goods_id_key = #{id}")
 	Goods findsome(int id);
-	 
+	
+	@Select("select * from goods_info where goods_info.goods_type = #{id} ")
+	List<Goods> findCategory(int id);
+	
 }
