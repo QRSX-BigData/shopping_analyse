@@ -87,6 +87,7 @@ background-color:
 							<img src="images/erweima.png" alt="">
 						</div>
 					</li>
+				
 				</ul>
 			</div>
 		</div>	
@@ -102,7 +103,9 @@ background-color:
 					<input class="txt" type="text">
 					<input class="but" type="submit" name="" value="搜索">
 				</form>
+
 			</div>
+
 		</div>
 		<!--header end-->
 		<!--shop body start-->
@@ -111,16 +114,20 @@ background-color:
 				<ul class="nav_list">
 					<li><a href="">全部分类</a></li>
 					<li><a href="">首页</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
+					<li><a href="">大米</a></li>
 
-					<li><a href="">中兴手机</a></li>
-					<li><a href="">中兴笔记本</a></li>
-					<li><a href="">小家电</a></li>
-					<li><a href="">盒子路由</a></li>
-					<li><a href="">智能酷玩</a></li>
-					<li><a href="">数码配件</a></li>
-					<li><a href="">生活周边</a></li>
 				</ul>
-
+	
 			</div>
 			<div class="guid" th:object="${shop}">
 				<ul class="guid_list">
@@ -133,21 +140,17 @@ background-color:
 					<li th:text="*{goods_name}"><a href=""></a></li>
 
 				</ul>
+
 			</div>
 			<div class="shop_body">
 				<div class="show">
+
 				</div>
 				<div class="info">
-
-					<div class="sku_name">
-						<!-- <p>
-							<tr th:each="c:${shop}">
-							<td th:text="${c.goods_name}"></td>
-								</tr> 
-						</p> -->
-
 					<div class="sku_name" th:object="${shop}">
 					<p th:text="*{goods_name}"></p>
+						
+						
 					</div>
 					<div></div>
 					<div class="hide">
@@ -159,9 +162,10 @@ background-color:
 						<div class="dd1" th:object="${shop}">
 							<p class="p1">京东价</p>
 							<p class="p2">￥</p>
-							<p class="p3" th:text="*{goods_price}"></p>
+							<p class="p3" th:text="*{goods_price}">
 							
-							<p class="p4" th:text="'&nbsp;&nbsp;&nbsp;&nbsp;库存：'+*{goods_num}">
+							</p>
+							<p class="p4" th:text="'库存：'+*{goods_num}">
 							</p>
 
 						</div>
@@ -194,25 +198,25 @@ background-color:
 							<div class="color_info">
 								<div class="color_select">
 									<a href="#none">黑</a>
+
 								</div>
 							</div>
 						</div>
+
 					</div>
-
-					<div>
-
 					<div th:object="${shop}">
 					<button class="fifth_div_7_button_1">立即购买</button>
-
-					<button class="fifth_div_7_button_1"><a href="addtocar?id=${shop.goods_id_key}">加入购物车</a></button>
-					<td th:text="${shop.goods_id_key}"></td>
-
 					<button class="fifth_div_7_button_1"><a th:href="'addtocar?id='+*{goods_id_key}">加入购物车</a></button>
-
 					</div>
+
 				</div>
+
 			</div>
 		</div>
+
+
+
+		
 	</body>
 
 </html>

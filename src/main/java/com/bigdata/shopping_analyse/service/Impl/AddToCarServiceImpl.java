@@ -10,27 +10,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AddToCarServiceImpl implements AddToCarService {
-    @Autowired AddToCarMapper addtocarMapper;
+	@Autowired
+	AddToCarMapper addtocarMapper;
 
 	public int addgoods(int goods_id) {
-		
-		//这里模拟
-		HttpServletRequest request = null;
-		@SuppressWarnings("null")
-		HttpSession session = request.getSession();
-		//把登录名放到session中
-		session.setAttribute("userid", 1);
-		//上面的应该是登录成功时干的
-		
-		//这里本次服务的业务
-		//从session中获取登录名
-		System.out.println("userid:"+session.getAttribute("userid"));
-		
-		
+		// 这里本次服务的业务
 		ShoppingCar s = new ShoppingCar();
-		s.setUser_id((int) session.getAttribute("userid"));
-		s.setGoods_id(goods_id);
 		return addtocarMapper.insertgoods(s);
 	}
 
+	static Object getuserid(HttpServletRequest request) {
+		// 这里模拟
+		HttpSession session = request.getSession();
+		// 把登录名放到session中
+		session.setAttribute("userid", 1);
+		return request.getSession().getAttribute("userid");
+	}
 }
