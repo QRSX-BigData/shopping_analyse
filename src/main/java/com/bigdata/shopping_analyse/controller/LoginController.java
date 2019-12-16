@@ -2,10 +2,7 @@ package com.bigdata.shopping_analyse.controller;
 
 import com.bigdata.shopping_analyse.pojo.Account;
 import com.bigdata.shopping_analyse.service.RegistService;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestBody;
