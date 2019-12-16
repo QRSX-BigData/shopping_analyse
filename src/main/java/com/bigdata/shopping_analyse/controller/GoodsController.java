@@ -33,7 +33,7 @@ public class GoodsController {
 	@RequestMapping("/out")
 	public String out( HttpServletRequest request) throws Exception {
 		
-		// 把session中登录名移除
+		// 把session中登录id移除
 		request.getSession().removeAttribute("userid");
 		return "index";
 	}
