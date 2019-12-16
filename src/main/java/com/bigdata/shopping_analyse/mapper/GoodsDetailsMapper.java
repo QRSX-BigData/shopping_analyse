@@ -1,0 +1,22 @@
+package com.bigdata.shopping_analyse.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import com.bigdata.shopping_analyse.pojo.Goods;
+
+@Mapper
+public interface GoodsDetailsMapper {
+	@Select("select * from goods_info")
+	List<Goods> findall();
+	@Select("select count(*) from goods_info")
+	int count();
+	@Select("select * from goods_info where goods_info.goods_id_key = #{id}")
+	Goods selectgoodsdetails(int id);
+	
+	@Select("select * from goods_info where goods_info.goods_type = #{id} ")
+	List<Goods> findCategory(int id);
+	
+}
