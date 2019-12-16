@@ -27,8 +27,10 @@ public class LoginController {
 		 */
 
 		// 把登录名放到session中
-		request.getSession().setAttribute("userid", (int)registService.selectidbyname(account.getUsername()));
-		// System.out.println(registService.selectidbyname(account.getUsername()));
+//		request.getSession().setAttribute("userid", (int)registService.selectidbyname(account.getUsername()));
+		
+		// 测试没有登录
+		request.getSession().removeAttribute("userid");
 		// 将传过来的数据调用mapper层中的方法查询，查询为null的话就不存在
 		return registService.select(account.getUsername(),
 				DigestUtils.md5DigestAsHex(account.getPassword().getBytes())) == null ? "false" : "success";

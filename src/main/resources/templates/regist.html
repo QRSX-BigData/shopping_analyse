@@ -6,17 +6,20 @@
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/vue.min.js"></script>
 	<script src="./js/axios.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/regist.css"/>
-    <link rel="icon" type="image/x-ico" href="image/bb.png"/>
+	<link rel="stylesheet" type="text/css" href="./css/regist.css"/>
+    <link rel="icon" type="image/x-ico" href="images/bb.png"/>
+
+
 </head>
 
 <body>
 <div>
+
 		<!-- =====1、顶部====== -->
 			<div id="header">
-				<div class="image/h-top">
+				<div class="images/h-top">
 				<!-- 图标logo -->
-				<img src="image/logo.png">
+				<img src="images/logo.png">
 				</div>
 				<!-- 已有账号 -->
 				<p>已有账号？<a href="login.html">请登录></a></p>
@@ -27,8 +30,10 @@
 			<div id="content">
 				<div class="input_div">
 					<div class="input-middle">
-						<input type="text" name="username" class="username" id="username" value="" v-model="register.username" placeholder=" 账号" >
-						<input type="password" name="password" class="password" id="password"  v-model="register.password" placeholder=" 密码">
+						<input type="text" name="username" class="username" id="username" value="" v-model="register.username" placeholder=" 账号" @blur="lostfunction" >
+						<span v-model="lost" v-if="hide">{{lost}}</span>
+						<input type="password" name="password" class="password" id="password"  v-model="register.password" placeholder=" 密码" @blur="passwordkong">
+						<span v-model="lostpass" v-if="hidepass">{{lostpass}}</span>
 						<input type="password" name="passwordsecond" class="password" id="passwordsecond"  v-model="passw.pass" placeholder=" 再次输入密码">
 						<br><br><br><br><br><br><br>
 						<span id="tishi"></span>
@@ -39,9 +44,9 @@
 						<button class="xiayi" type="button" id="button1"  @click="add">注册</button>
 						</div>
 						<div class="info-bottomer">
-						<img class="qiyetu"  src="image/qiye.png">
+						<img class="qiyetu"  src="images/qiye.png">
 						<a class="qiye" href="">企业用户注册</a>
-						<img  class="haiwaitu" src="image/haiwai.png">
+						<img  class="haiwaitu" src="images/haiwai.png">
 						<a class="haiwai" href="">海外用户注册</a>
 					</div>
 				</div>
@@ -90,21 +95,39 @@
 		el:'#app',
 		data:{
 		register,
-		passw
+		passw,
+		lost:'',
+		lostpass:'',
+		hide:false,
+		hidepass:false
 		},
 		methods:{
+<!--			查看账号是否为空-->
+			lostfunction:function(){
+			if(document.getElementById("username").value==''){
+				this.hide=true;
+				this.lost="账号不能为空";
+			}else{
+				this.hide=false;
+			}
+			},
+<!--			查看密码是否为空-->
+			passwordkong:function(){
+			if(document.getElementById("password").value==''){
+				this.hidepass=true;
+				this.lostpass="密码不能为空";
+			}else{
+				this.hidepass=false;
+			}
+			},
 			add:function(event){
 			this.password = document.getElementById("password").value;
 			this.pass = document.getElementById("passwordsecond").value;
-			console.log(vue.password)
-			console.log(vue.pass)
 				if (vue.password===vue.pass) {
-				console.log(vue.password)
-				console.log(vue.pass)
 				var url = "register";
 				axios.post(url,this.register).then(function(response){
 					if (response.data=='success') {<!-- response.data用来接收Controller返回的东西 -->
-						window.location.href='login';
+						window.location.href='login.html';
 					}else{
 						document.getElementById("username").value='';
 						alert("用户名已存在请重新输入！");

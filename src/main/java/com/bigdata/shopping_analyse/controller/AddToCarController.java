@@ -16,9 +16,14 @@ public class AddToCarController {
 	// 添加商品到购物车
 	@RequestMapping("/addtocar")
 	public String listCategory(Model m, HttpServletRequest request, int id) throws Exception {
-	
-		addtocarservice.addgoods(id, (int) request.getSession().getAttribute("userid"));
-		m.addAttribute("shop", goodsdetailsmapper.selectgoodsdetails(id));
-		return "shop1";
+		//如果没有登录跳转到登录页面
+		if(request.getSession().getAttribute("userid") == null) {
+			return "login";
+		}else {
+			addtocarservice.addgoods(id, (int) request.getSession().getAttribute("userid"));
+			m.addAttribute("shop", goodsdetailsmapper.selectgoodsdetails(id));
+			return "shop1";
+		}
+		
 	}
 }
