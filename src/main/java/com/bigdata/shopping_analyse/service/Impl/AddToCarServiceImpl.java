@@ -22,7 +22,7 @@ public class AddToCarServiceImpl implements AddToCarService {
 		s.setUser_id(userid);
 		s.setGoods_id(goodsid);
 		// 商品已存在,就不用添加
-		if (addtocarMapper.selectGoodsIsExist(goodsid) > 0) {
+		if (addtocarMapper.selectGoodsIsExist(s) > 0) {
 			return 1;
 		} else {                                               
 			// 添加成功返回2

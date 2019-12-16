@@ -15,7 +15,6 @@ public class goodforeachController {
 	public String shop(Model m,int id) throws Exception {
 		Goods shop=goodsmapper.findsome(id);	
 		m.addAttribute("shop", shop);
-		//m.addAttribute("id", id);
 		return "shop1";
 	}
 }

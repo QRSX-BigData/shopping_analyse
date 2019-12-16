@@ -8,20 +8,27 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RegistServiceImpl implements RegistService {
-    @Autowired RegistMapper registMapper;
+	@Autowired
+	RegistMapper registMapper;
 
-    @Override
-    public int add(Account account) {
-        return registMapper.add(account);
-    }
+	@Override
+	public int add(Account account) {
+		return registMapper.add(account);
+	}
 
-    @Override
-    public int get(Account account) {
-        return registMapper.get(account);
-    }
+	@Override
+	public int get(Account account) {
+		return registMapper.get(account);
+	}
 
-    @Override
-    public Account select(String username, String password){
-        return registMapper.select(username, password);
-    }
+	@Override
+	public Account select(String username, String password) {
+		return registMapper.select(username, password);
+	}
+
+	@Override
+	public int selectidbyname(String username) {
+		return registMapper.selectidbyname(username);
+	}
+
 }
