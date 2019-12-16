@@ -72,8 +72,9 @@ a{
 
 #content  .input_div .input-middle {
 	top:-10%;
-	height:250px;
+	height:400px;
 	left:4%;
+	width:600px;
 }
 
 #content  .input_div .input-middle input{
@@ -108,9 +109,6 @@ a{
 	font-size:14px;
 	
 }
-#tishi{
-	left: 300px;
-}
 #content  .input_div .info-bottomer a{
 	color:rgb(0,0,0)
 }
@@ -131,6 +129,10 @@ a{
 #content  .input_div .info-bottomer .haiwaitu{
 	top:20px;
 	left:120px;
+}
+span{
+    top:157px;
+    color:red;
 }
 
 
