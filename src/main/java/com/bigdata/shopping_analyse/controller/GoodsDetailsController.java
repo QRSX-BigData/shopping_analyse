@@ -11,6 +11,7 @@ import com.bigdata.shopping_analyse.service.GoodsDetailsService;
 public class GoodsDetailsController { 
 	@Autowired GoodsDetailsService goodsdetailsservice;
 
+	// 跳转到商品详情表
 	@GetMapping("/shop01")//控制层的获取方法必须要和url 的方法 要一致   就像是dopost 和doget 一样
 	public String shop(Model m,int id) throws Exception {
 		Goods shop=goodsdetailsservice.selectgoodsdetailsbyid(id);	

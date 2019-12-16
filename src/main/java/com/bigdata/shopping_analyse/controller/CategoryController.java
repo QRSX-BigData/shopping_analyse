@@ -9,20 +9,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.bigdata.shopping_analyse.mapper.GoodsMapper;
 import com.bigdata.shopping_analyse.pojo.Goods;
+import com.bigdata.shopping_analyse.service.CategoryService;
 
 // 跳转到分类页面
 @Controller
 public class CategoryController { 
-	@Autowired GoodsMapper goodsmapper;
+	@Autowired CategoryService categoryservice;
 	
 	@GetMapping("/fenlei1")
 	public String category1(Model m,int id) throws Exception {
-		List<Goods> shop=goodsmapper.findCategory(id);
+		List<Goods> shop =categoryservice.selectcategory(id);
 		m.addAttribute("shop", shop);
-		
 		return "category1";
 	}
-	
-	
-
 }

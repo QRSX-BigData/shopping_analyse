@@ -3,9 +3,13 @@ package com.bigdata.shopping_analyse.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.bigdata.shopping_analyse.mapper.GoodsDetailsMapper;
+import com.bigdata.shopping_analyse.pojo.Goods;
 import com.bigdata.shopping_analyse.pojo.Order;
 import com.bigdata.shopping_analyse.service.PaymentService;
 /*
@@ -13,8 +17,8 @@ import com.bigdata.shopping_analyse.service.PaymentService;
  */
 @Controller
 public class PaymentController {
-	@Resource
-    private PaymentService paymentService;
+	@Resource PaymentService paymentService;
+	@Resource GoodsDetailsMapper goodsdetailsmapper;
 	@RequestMapping("/paymentone") 
 	//前台传商品id,controller层返回server层的处理结果，server层将姓名，商品id插入，返回处理结果
 	
@@ -22,7 +26,8 @@ public class PaymentController {
 	public String paymentone(Model m,HttpServletRequest request, int id) throws Exception {
 		//成功返回前台true,失败返回false
 		m.addAttribute("status", paymentService.insertone(id, (int) request.getSession().getAttribute("userid")));
-		return "cs_main";
+		m.addAttribute("shop", goodsdetailsmapper.selectgoodsdetails(id));
+		return "shop1";
 	}
 	
 	@RequestMapping("/paymentmore") 

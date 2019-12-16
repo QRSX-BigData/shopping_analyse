@@ -13,8 +13,7 @@ import com.bigdata.shopping_analyse.pojo.ShoppingCar;
 
 @Controller
 public class ShowShoppingCarController {
-	@Autowired
-	ShowShoppingCarMapper showshoppingcarmapper;
+	@Autowired ShowShoppingCarMapper showshoppingcarmapper;
 
 	// 查看当前用户的购物车里的商品
 	@RequestMapping("/ShowCarList")
