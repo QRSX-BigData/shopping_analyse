@@ -6,6 +6,7 @@ import com.bigdata.shopping_analyse.service.RegistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+//注册实现
 @Service
 public class RegistServiceImpl implements RegistService {
     @Autowired RegistMapper registMapper;
@@ -20,8 +21,4 @@ public class RegistServiceImpl implements RegistService {
         return registMapper.get(account);
     }
 
-    @Override
-    public Account select(String username, String password){
-        return registMapper.select(username, password);
-    }
 }

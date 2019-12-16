@@ -1,5 +1,6 @@
 package com.bigdata.shopping_analyse.controller;
 
+import com.bigdata.shopping_analyse.mapper.LoginMapper;
 import com.bigdata.shopping_analyse.pojo.Account;
 import com.bigdata.shopping_analyse.service.RegistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 //登陆的Controller层
 public class LoginController {
-    @Autowired RegistService registService;
+    @Autowired LoginMapper loginMapper;
     //登陆
     @RequestMapping("/login1")
     public String select(@RequestBody Account account) throws Exception{
@@ -26,7 +27,7 @@ public class LoginController {
         }*/
 
         //将传过来的数据调用mapper层中的方法查询，查询为null的话就不存在
-        return registService.select(account.getUsername(), DigestUtils.md5DigestAsHex(account.getPassword().getBytes())) == null ? "false" :"success";
+        return loginMapper.select(account.getUsername(), DigestUtils.md5DigestAsHex(account.getPassword().getBytes())) == null ? "false" :"success";
     }
 
 }
