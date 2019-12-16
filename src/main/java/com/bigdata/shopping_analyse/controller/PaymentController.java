@@ -1,24 +1,28 @@
 package com.bigdata.shopping_analyse.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.bigdata.shopping_analyse.mapper.GoodsDetailsMapper;
+import com.bigdata.shopping_analyse.pojo.Goods;
 import com.bigdata.shopping_analyse.pojo.Order;
 import com.bigdata.shopping_analyse.service.PaymentService;
+import com.bigdata.shopping_analyse.service.ShowShoppingCarService;
 
 /*
  * 支付控制层
  */
 @Controller
 public class PaymentController {
-	@Resource
-	PaymentService paymentService;
-	@Resource
-	GoodsDetailsMapper goodsdetailsmapper;
+	@Resource PaymentService paymentService;
+	@Resource  GoodsDetailsMapper goodsdetailsmapper;
+	@Resource ShowShoppingCarService showshoppingcarservice;
 
+	// 商品详情页的购买
 	@RequestMapping("/paymentone")
 	// 前台传商品id,controller层返回server层的处理结果，server层将姓名，商品id插入，返回处理结果
 
@@ -33,6 +37,23 @@ public class PaymentController {
 			m.addAttribute("status", paymentService.insertone(id, (int) request.getSession().getAttribute("userid")));
 			m.addAttribute("shop", goodsdetailsmapper.selectgoodsdetails(id));
 			return "shop1";
+		}
+
+	}
+
+	// 购物车页面的购买
+	@RequestMapping("/paymentone1")
+	// 前台传商品id,controller层返回server层的处理结果，server层将姓名，商品id插入，返回处理结果
+
+	// 提交一个商品的订单
+	public String paymentone1(Model m, HttpServletRequest request) throws Exception {
+
+		if (request.getSession().getAttribute("userid") == null) {
+			return "login";
+		} else {
+			List<Goods> goodslist = showshoppingcarservice.selectGoodsInCarByUserid((int) request.getSession().getAttribute("userid"));
+			m.addAttribute("goodslist", goodslist);
+			return "shoppingcarList";
 		}
 
 	}
