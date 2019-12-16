@@ -35,5 +35,12 @@ public class LoginController {
 		return registService.select(account.getUsername(),
 				DigestUtils.md5DigestAsHex(account.getPassword().getBytes())) == null ? "false" : "success";
 	}
+	@RequestMapping("/out")
+	public String out( HttpServletRequest request) throws Exception {
+		
+		// 把登录名放到session中
+		request.getSession().removeAttribute("userid");
+		return "main";
+	}
 
 }
