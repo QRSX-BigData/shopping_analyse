@@ -16,7 +16,7 @@ public class AddToCarController {
 	// 添加商品到购物车
 	@RequestMapping("/addtocar")
 	public String listCategory(Model m, HttpServletRequest request, int id) throws Exception {
-		//如果没有登录跳转到登录页面
+		//如果没有登录,跳转到登录页面
 		if(request.getSession().getAttribute("userid") == null) {
 			return "login";
 		}else {
