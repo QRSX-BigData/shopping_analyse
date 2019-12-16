@@ -16,7 +16,7 @@ public class GoodsController {
 	public String listCategory(Model m) throws Exception {
 		List<Goods> shop=goodsmapper.findall();
 		m.addAttribute("shop", shop);
-		return "cs_main";
+		return "allgoods";
 	}
 	 
 //跳转到主页面
