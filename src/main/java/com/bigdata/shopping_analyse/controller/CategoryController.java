@@ -1,13 +1,10 @@
 package com.bigdata.shopping_analyse.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import com.bigdata.shopping_analyse.mapper.GoodsMapper;
 import com.bigdata.shopping_analyse.pojo.Goods;
 import com.bigdata.shopping_analyse.service.CategoryService;
 
