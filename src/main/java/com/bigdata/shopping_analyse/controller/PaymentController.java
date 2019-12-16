@@ -1,7 +1,6 @@
 package com.bigdata.shopping_analyse.controller;
 
 import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
