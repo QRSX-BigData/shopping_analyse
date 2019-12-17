@@ -7,7 +7,7 @@ import com.bigdata.shopping_analyse.pojo.Goods;
 
 @Mapper
 public interface ShowShoppingCarMapper {
-	@Select(	"select * "
+	@Select(	"select user_id_key，username，userpwd，address，shopping_success_num，shopping_fail_num，total_money_shopping_success，total_money_shopping_fail，last_login_time，create_id，create_time  "
 			+ "from goods_info "
 			+ "where goods_id_key "
 			+ "in "
