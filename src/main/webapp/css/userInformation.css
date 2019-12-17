@@ -64,6 +64,16 @@ a{
 	left:35%;
 	
 }
+#address{
+    top:180px;
+    right:-18px;
+    color:red;
+}
+#phone{
+    top:180px;
+    right:-18px;
+    color:red;
+}
 
 #content  .input_div img {
 	top:50px;
@@ -72,14 +82,13 @@ a{
 
 #content  .input_div .input-middle {
 	top:-10%;
-	height:400px;
+	height:250px;
 	left:4%;
-	width:600px;
 }
 
 #content  .input_div .input-middle input{
 	height:40px;
-	top:149px;
+	top:180px;
 	width:300px;
 	left:-2%;
 }
@@ -109,6 +118,9 @@ a{
 	font-size:14px;
 	
 }
+#tishi{
+	left: 300px;
+}
 #content  .input_div .info-bottomer a{
 	color:rgb(0,0,0)
 }
@@ -129,10 +141,6 @@ a{
 #content  .input_div .info-bottomer .haiwaitu{
 	top:20px;
 	left:120px;
-}
-span{
-    top:157px;
-    color:red;
 }
 
 
