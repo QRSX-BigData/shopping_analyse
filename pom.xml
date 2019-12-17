@@ -21,7 +21,8 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions><!-- 去掉springboot默认配置 -->
+			<!-- 删除logback相关依赖，这是由于springboot-web默认集成的就是logback日志 -->
+			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-starter-logging</artifactId>
@@ -99,6 +100,24 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
+		
+		<!-- 简化实体类，如果你引用了它，那么等会操作日志的时候仅仅只需要一个注解即可。 -->
+		<dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+		<!-- flume -->
+	<!--     <dependency>
+	        <groupId>org.apache.logging.log4j</groupId>
+	        <artifactId>log4j-flume-ng</artifactId>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.apache.flume.flume-ng-clients</groupId>
+	        <artifactId>flume-ng-log4jappender</artifactId>
+	        <version>1.6.0</version>
+	    </dependency> -->
 
 	</dependencies>
 
