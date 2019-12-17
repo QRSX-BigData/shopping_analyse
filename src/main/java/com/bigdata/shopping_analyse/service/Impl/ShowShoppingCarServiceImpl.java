@@ -13,5 +13,4 @@ public class ShowShoppingCarServiceImpl implements ShowShoppingCarService {
 	public List<Goods> selectGoodsInCarByUserid(int user_id) {
 		return showshoppingcarmapper.selectGoodsInCarByUserid(user_id);
 	}
-
 }

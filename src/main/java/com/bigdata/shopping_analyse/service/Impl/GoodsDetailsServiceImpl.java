@@ -12,9 +12,6 @@ public class GoodsDetailsServiceImpl implements GoodsDetailsService {
 
 	@Override
 	public Goods selectgoodsdetailsbyid(int id) {
-		// TODO Auto-generated method stub
 		return goodsdetailsmapper.selectgoodsdetails(id);
 	}
-
-
 }
