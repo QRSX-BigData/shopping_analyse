@@ -16,7 +16,7 @@ public interface RegistMapper {
 	int get(Account account);
 
 	// 登陆
-	@Select("select user_id_key，username，userpwd，address，shopping_success_num，shopping_fail_num，total_money_shopping_success，total_money_shopping_fail，last_login_time，create_id，create_time from user_info where username=#{0} and userpwd = #{1}")
+	@Select("select user_id_key,username,userpwd,address,shopping_success_num,shopping_fail_num,total_money_shopping_success,total_money_shopping_fail,last_login_time,create_id,create_time from user_info where username=#{0} and userpwd = #{1}")
 	Account select(String username, String userpwd);
 
 	// 查找用户名id

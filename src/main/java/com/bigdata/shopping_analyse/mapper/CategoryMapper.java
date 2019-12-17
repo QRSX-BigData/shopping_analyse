@@ -10,7 +10,7 @@ import com.bigdata.shopping_analyse.pojo.Goods;
 @Mapper
 public interface CategoryMapper {
 
-	@Select("select goods_id_key，goods_name，goods_price，goods_num，goods_type，create_id，create_time，uppdate_id，update_time from goods_info where goods_info.goods_type = #{id} ")
+	@Select("select goods_id_key,goods_name,goods_price,goods_num,goods_type,create_id,create_time,uppdate_id,update_time from goods_info where goods_info.goods_type = #{id} ")
 	List<Goods> selectCategory(int id);
 	
 }
