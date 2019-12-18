@@ -118,7 +118,7 @@
 	</dependencies>
 
 	<properties>
-		<java.version>1.8.0_73</java.version>
+		<!-- <java.version>1.8.0_73</java.version> -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!--添加下面两项指定thymeleaf的版本 不然的化在url 赋值的时候就会报错 元素类型 "link" 必须由匹配的结束标记 "</link>" 
 			终止 -->

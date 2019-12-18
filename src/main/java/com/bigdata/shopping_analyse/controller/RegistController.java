@@ -6,23 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 //注册的Controller层
 public class RegistController {
     @Autowired RegistService registService;
-    //注册
+    private static final org.slf4j.Logger Log = org.slf4j.LoggerFactory.getLogger(AddToCarController.class);    //注册
     @RequestMapping("/register")
     public String add(@RequestBody Account s) throws Exception {
-        if(registService.get(s)==0){
+    	s.setPassword(DigestUtils.md5DigestAsHex(s.getPassword().getBytes()));
+    	return registService.add(s);
+      /*  if(registService.get(s)==0){
             //将密码设置为MD5加密
             s.setPassword(DigestUtils.md5DigestAsHex(s.getPassword().getBytes()));
             //添加到数据库中
-            registService.add(s);
-            return "success";
-
+            if(registService.add(s)==1) {
+            	 Log.warn("0");
+            	 return "success";
+            }else{
+                return "false";
+            }
         }else{
             return "false";
-        }
+        }*/
     }
 }

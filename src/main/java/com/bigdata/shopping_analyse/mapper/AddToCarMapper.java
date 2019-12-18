@@ -12,4 +12,6 @@ public interface AddToCarMapper {
 	int insertgoods(ShoppingCar s);
 	@Select("select count(goods_id) from shopping_car_info where user_id = #{user_id}  and  goods_id = #{goods_id}")
 	int selectGoodsIsExist(ShoppingCar s);
+	@Select("select goods_type from goods_info where goods_id_key = #{goods_id}")
+	int selectGoodstype(int goodsid);
 }
