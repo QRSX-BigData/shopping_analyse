@@ -1,17 +1,13 @@
 package com.bigdata.shopping_analyse.controller;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.bigdata.shopping_analyse.mapper.GoodsMapper;
 import com.bigdata.shopping_analyse.pojo.Goods;
-
-import lombok.extern.slf4j.Slf4j;
 
 //全部商品展示
 @Controller
