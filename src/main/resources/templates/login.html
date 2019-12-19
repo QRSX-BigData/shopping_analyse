@@ -116,6 +116,9 @@
             },
             methods:{
                 login:function(event){
+                    if(document.getElementById("username").value==''&& document.getElementById("password").value==''){
+                        alert("账号或密码不能为空");
+                    }else{
                     this.username = document.getElementById("username").value;
                     this.password = document.getElementById("password").value;
                     var url = "login1";
@@ -126,8 +129,8 @@
                             alert("账号或密码输入错误");
                         }
                     });
+                    }
                 }
-
             }
         });
     </script>
