@@ -18,12 +18,18 @@ public class LoginServiceImpl implements LoginService {
     @Autowired RegistService registService;
 	public String select(Account account, HttpServletRequest request) {
 		
-    //登录时用户不存在
+		// 账号密码为空
+		/*if(account.getUsername() == null || account.getPassword() == null) {
+			log.warn(0+" "+4+" "+0+" "+0+" "+2);
+			return "false";
+		}*/
+		//登录时用户不存在
 		if(loginmapper.select(account.getUsername(),DigestUtils.md5DigestAsHex(account.getPassword().getBytes())) == null) {
 			//登录失败埋点
 			log.warn(0+" "+4+" "+registService.selectidbyname(account.getUsername())+" "+0+" "+3);
 			return "false";
 		}else {
+			//登录时用户存在
 			// 把用户id放到session中
 			request.getSession().setAttribute("userid", (int)registService.selectidbyname(account.getUsername()));
 			//登录成功埋点

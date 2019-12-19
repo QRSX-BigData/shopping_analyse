@@ -30,7 +30,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<!-- Log4j2 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -42,7 +42,19 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
+
+		<!-- flume -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-flume-ng</artifactId>
+		</dependency>
 		
+		<dependency>
+			<groupId>org.apache.flume.flume-ng-clients</groupId>
+			<artifactId>flume-ng-log4jappender</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+
 		<!-- springboot thymeleaf 支持 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -96,25 +108,20 @@
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-		
+
 		<!-- mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-		
+
 		<!-- pageHelper -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 			<version>4.1.6</version>
 		</dependency>
-		
-		<!-- flume -->
-		<!-- <dependency> <groupId>org.apache.logging.log4j</groupId> <artifactId>log4j-flume-ng</artifactId> 
-			</dependency> <dependency> <groupId>org.apache.flume.flume-ng-clients</groupId> 
-			<artifactId>flume-ng-log4jappender</artifactId> <version>1.6.0</version> 
-			</dependency> -->
+
 	</dependencies>
 
 	<properties>
