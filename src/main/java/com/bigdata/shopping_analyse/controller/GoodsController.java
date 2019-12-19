@@ -20,13 +20,13 @@ public class GoodsController {
 		return "allgoods";
 	}
 	 
-	//跳转到主页面
-	@RequestMapping("/main") 
-	public String listmain(Model m) throws Exception {
-		List<Goods> shop=goodsmapper.findall();
-		m.addAttribute("shop", shop);
-		return "index";
-	}
+//	//跳转到主页面
+//	@RequestMapping("/main") 
+//	public String listmain(Model m) throws Exception {
+//		List<Goods> shop=goodsmapper.findall();
+//		m.addAttribute("shop", shop);
+//		return "index";
+//	}
 	//退出登录
 	@RequestMapping("/out")
 	public String out( HttpServletRequest request) throws Exception {
