@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <!--自定义flume日志级别-->
+    <CustomLevels>
+        <CustomLevel name="FLUME" intLevel="88" />
+    </CustomLevels>
+    <!--定义输出日志的地方-->
+    <Appenders>
+        <!--控制台输出-->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern= "%d{yyyy-MM-dd-HH-mm-ss} %m%n"/>
+        </Console>
+        <!--log文件输出-->
+        <File name="MyFile" fileName="logs/app.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n"/>
+        </File>
+        <!--输出到flume-->
+       <!--  <Flume name="eventLogger" compress="false" type="avro">
+            <Agent host="192.168.150.129" port="44444"/>
+            输出方式为json
+            <JSONLayout/>
+        </Flume> -->
+        <!--输出到flume-->
+        <Flume name="FlumeInfo" compress="false" type="avro" ignoreExceptions="true">
+            <Agent host="192.168.150.129" port="44444"/>
+            <!--输出方式为json-->
+            <!--<JSONLayout/>-->
+           <PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n"/>
+        </Flume>
+    </Appenders>
+  
+     <loggers>
+        <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
+        <logger name="org.springframework" level="WARN"></logger>
+        <logger name="org.mybatis" level="WARN"></logger>
+        <root level="WARN">
+        	 <appender-ref ref="Console"/>
+            <appender-ref ref="MyFile"/>
+            <appender-ref ref="FlumeInfo"/>
+        </root>
+    </loggers>
+</Configuration>
