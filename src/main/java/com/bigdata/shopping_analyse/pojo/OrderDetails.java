@@ -1,13 +1,26 @@
 package com.bigdata.shopping_analyse.pojo;
 
+/**
+ * 订单详情表
+ * @author acer-pc
+ *
+ */
 public class OrderDetails{
+	// 主键
 	private int order_details_id_key;
+	// 订单id  下单时间+user_id
 	private String order_id;
+	// 商品 id
 	private int goods_id;
+	// 商品数量
 	private int goods_num;
+	// 商品价格
 	private double goods_price;
+	// 创建时间
 	private String create_time;
+	// 更新时间
 	private String update_time;
+	
 	public int getOrder_details_id_key() {
 		return order_details_id_key;
 	}
