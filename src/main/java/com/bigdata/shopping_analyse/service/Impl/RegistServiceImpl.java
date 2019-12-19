@@ -26,17 +26,17 @@ public class RegistServiceImpl implements RegistService {
 			//用户注册成功
 			if (registMapper.add(s) == 1) {
 				//注册成功埋点
-				log.warn(0+" "+5+" "+registMapper.selectidbyname(s.getUsername())+" "+0+" "+2);
+				log.warn(0+" "+5+" "+registMapper.selectIdByName(s.getUsername())+" "+0+" "+2);
 				return "success";
 			} else {
 				//注册失败埋点
-				log.warn(0+" "+5+" "+registMapper.selectidbyname(s.getUsername())+" "+0+" "+3);
+				log.warn(0+" "+5+" "+registMapper.selectIdByName(s.getUsername())+" "+0+" "+3);
 				return "false";
 			}
 		} else {
 			//注册的用户已经存在埋点
 			//注册失败埋点
-			log.warn(0+" "+5+" "+registMapper.selectidbyname(s.getUsername())+" "+0+" "+1);
+			log.warn(0+" "+5+" "+registMapper.selectIdByName(s.getUsername())+" "+0+" "+1);
 			return "false";
 		}
 	}
@@ -49,8 +49,8 @@ public class RegistServiceImpl implements RegistService {
 		return registMapper.select(username, password);
 	}
 
-	public int selectidbyname(String username) {
-		return registMapper.selectidbyname(username);
+	public int selectIdByName(String username) {
+		return registMapper.selectIdByName(username);
 	}
 
 }

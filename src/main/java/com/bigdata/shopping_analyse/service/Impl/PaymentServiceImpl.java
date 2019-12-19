@@ -20,14 +20,14 @@ public class PaymentServiceImpl implements PaymentService{
 	@Autowired PaymentMapper paymentmapper;
 	@Autowired AddToCarMapper addtocarmapper;
 	
-	public boolean insertone(int goodsid, int userid) {
+	public boolean insertOne(int goodsid, int userid) {
 		//设置日期格式
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
 		// new Date()为获取当前系统时间
 		Order o = new Order();
 		o.setOrder_id(df.format(new Date())+userid);
 		o.setGoods_id(goodsid);
-		if(paymentmapper.insertone1(o)> 0) {
+		if(paymentmapper.insertOne1(o)> 0) {
 			log.warn(addtocarmapper.selectGoodstype(goodsid)+" "+3+" "+userid+" "+goodsid+" "+2);
 			return true;
 		}else {
@@ -37,7 +37,7 @@ public class PaymentServiceImpl implements PaymentService{
 //		return paymentmapper.insertone1(o)> 0 ? true:false;
 	}
 
-	public boolean insertmore(Order order) {
+	public boolean insertMore(Order order) {
 		// TODO Auto-generated method stub
 		return false;
 	}

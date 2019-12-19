@@ -22,11 +22,11 @@ public class GoodsDetailsServiceImpl implements GoodsDetailsService {
 		// 未登录的用户浏览商品详情
 		if (userid == null) {
 			log.warn(addtocarmapper.selectGoodstype(goodsid) + " " + 1 +" "+ 0 + " " + goodsid + " " + 2);
-			return goodsdetailsmapper.selectgoodsdetails(goodsid);
+			return goodsdetailsmapper.selectGoodsDetails(goodsid);
 		} else {
 			// 登录的用户浏览商品详情
 			log.warn(addtocarmapper.selectGoodstype(goodsid) + " " + 1 +" "+ userid + " " + goodsid + " " + 2);
-			return goodsdetailsmapper.selectgoodsdetails(goodsid);
+			return goodsdetailsmapper.selectGoodsDetails(goodsid);
 		}
 	}
 }

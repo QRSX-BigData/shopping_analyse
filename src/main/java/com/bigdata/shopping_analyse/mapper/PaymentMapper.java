@@ -3,12 +3,19 @@ package com.bigdata.shopping_analyse.mapper;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import com.bigdata.shopping_analyse.pojo.Order;
-
+/**
+ * 
+ * 支付mapper层
+ *
+ */
 @Mapper
 public interface PaymentMapper {
-	@Insert("insert into order_info (order_id,goods_id) values (#{order_id},#{user_id})")
-	int insertone(String order_id, int user_id);
 	
+	// 商品详情页的支付
+	@Insert("insert into order_info (order_id,goods_id) values (#{order_id},#{user_id})")
+	int insertOne(String order_id, int user_id);
+	
+	// 购物车页的支付
 	@Insert("insert into order_info (order_id,goods_id) values (#{order_id},#{goods_id})")
-	int insertone1(Order order);
+	int insertOne1(Order order);
 }

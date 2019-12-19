@@ -9,12 +9,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.bigdata.shopping_analyse.pojo.Goods;
 import com.bigdata.shopping_analyse.service.GoodsDetailsService;
 
+/**
+ * 
+ * 商品详情控制层
+ *
+ */
+
 @Controller
 public class GoodsDetailsController { 
 	@Autowired GoodsDetailsService goodsdetailsservice;
 
 	// 跳转到商品详情表
-	@GetMapping("/shop01")//控制层的获取方法必须要和url 的方法 要一致   就像是dopost 和doget 一样
+	@GetMapping("/shop01")
 	public String shop(Model m,int id,HttpServletRequest request) throws Exception {
 		Goods shop=goodsdetailsservice.selectgoodsdetailsbyid(id,request.getSession().getAttribute("userid"));	
 		m.addAttribute("shop", shop);

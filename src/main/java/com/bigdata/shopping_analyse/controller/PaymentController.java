@@ -14,8 +14,10 @@ import com.bigdata.shopping_analyse.service.ShowShoppingCarService;
 
 import lombok.extern.slf4j.Slf4j;
 
-/*
+/**
+ * 
  * 支付控制层
+ *
  */
 @Controller
 @Slf4j
@@ -23,8 +25,6 @@ public class PaymentController {
 	@Resource PaymentService paymentService;
 	@Resource  GoodsDetailsMapper goodsdetailsmapper;
 	@Resource ShowShoppingCarService showshoppingcarservice;
-
-	// 商品详情页的购买
 	@RequestMapping("/paymentone")
 	// 前台传商品id,controller层返回server层的处理结果，server层将姓名，商品id插入，返回处理结果
 	// 提交一个商品的订单
@@ -36,8 +36,8 @@ public class PaymentController {
 			return "login";
 		} else {
 			// 成功返回前台true,失败返回false
-			m.addAttribute("status", paymentService.insertone(id, (int) request.getSession().getAttribute("userid")));
-			m.addAttribute("shop", goodsdetailsmapper.selectgoodsdetails(id));
+			m.addAttribute("status", paymentService.insertOne(id, (int) request.getSession().getAttribute("userid")));
+			m.addAttribute("shop", goodsdetailsmapper.selectGoodsDetails(id));
 			return "shop1";
 		}
 
@@ -67,7 +67,7 @@ public class PaymentController {
 	// 4 计算总价格，更新
 	public String paymentmore(Model m, Order order) throws Exception {
 		// 成功返回前台true,失败返回false
-		m.addAttribute("status", paymentService.insertmore(order));
+		m.addAttribute("status", paymentService.insertMore(order));
 		return "cs_main";
 	}
 }

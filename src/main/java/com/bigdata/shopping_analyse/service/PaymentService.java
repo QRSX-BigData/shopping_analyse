@@ -7,8 +7,8 @@ import com.bigdata.shopping_analyse.pojo.Order;
 public interface PaymentService {
 	
 	//在详情页支付单个商品
-	boolean insertone(int goodsid, int userid);
+	boolean insertOne(int goodsid, int userid);
 
 	//在购物车页支付单个或多个商品
-	boolean insertmore(Order order);
+	boolean insertMore(Order order);
 }

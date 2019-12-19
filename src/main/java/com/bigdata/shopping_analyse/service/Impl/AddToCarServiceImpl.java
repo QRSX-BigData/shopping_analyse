@@ -29,7 +29,7 @@ public class AddToCarServiceImpl implements AddToCarService {
 			log.warn(addtocarMapper.selectGoodstype(goodsid) + " " +1+" "+ userid + " " + goodsid + " " + 1);
 			return 1;
 		} else {
-			if (addtocarMapper.insertgoods(s) == 1) {
+			if (addtocarMapper.insertGoods(s) == 1) {
 				//添加成功返回2埋点
 				log.warn(addtocarMapper.selectGoodstype(goodsid) + " " +2+" "+ userid + " " + goodsid + " " + 2);
 				return 2;

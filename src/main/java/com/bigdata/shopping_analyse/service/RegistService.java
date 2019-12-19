@@ -9,5 +9,5 @@ public interface RegistService {
 
 	Account select(String username, String password);
 	
-	int selectidbyname(String username);
+	int selectIdByName(String username);
 }

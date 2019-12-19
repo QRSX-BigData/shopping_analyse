@@ -9,7 +9,11 @@ import com.bigdata.shopping_analyse.mapper.GoodsDetailsMapper;
 import com.bigdata.shopping_analyse.service.AddToCarService;
 
 import lombok.extern.slf4j.Slf4j;
-
+/**
+ * 
+ * 购物车控制层
+ *
+ */
 @Controller
 @Slf4j
 public class AddToCarController {
@@ -27,8 +31,9 @@ public class AddToCarController {
 			log.warn(0+" "+2+ " " +0+ " " + id + " " + 3);
 			return "login";
 		} else {
+			// 如果登录,跳转到商品详情页面
 			addtocarservice.addgoods(id, (int) request.getSession().getAttribute("userid"));
-			m.addAttribute("shop", goodsdetailsmapper.selectgoodsdetails(id));
+			m.addAttribute("shop", goodsdetailsmapper.selectGoodsDetails(id));
 			return "shop1";
 		}
 	}

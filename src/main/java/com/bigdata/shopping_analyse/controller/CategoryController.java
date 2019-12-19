@@ -8,14 +8,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.bigdata.shopping_analyse.pojo.Goods;
 import com.bigdata.shopping_analyse.service.CategoryService;
 
-// 跳转到分类页面
+/**
+ * 
+ * 分类控制层
+ *
+ */
 @Controller
 public class CategoryController { 
 	@Autowired CategoryService categoryservice;
 	
+	//商品分类页跳转
 	@GetMapping("/fenlei1")
 	public String category1(Model m,int id) throws Exception {
-		List<Goods> shop =categoryservice.selectcategory(id);
+		List<Goods> shop =categoryservice.selectCategory(id);
 		m.addAttribute("shop", shop);
 		return "category1";
 	}

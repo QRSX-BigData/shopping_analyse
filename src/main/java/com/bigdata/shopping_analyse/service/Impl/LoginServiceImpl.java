@@ -16,7 +16,7 @@ import org.springframework.util.DigestUtils;
 public class LoginServiceImpl implements LoginService {
     @Autowired LoginMapper loginmapper;
     @Autowired RegistService registService;
-	public String select(Account account, HttpServletRequest request) {
+	public String selectAccountIsExists(Account account, HttpServletRequest request) {
 		
 		// 前台已经处理了,以防万一，账号密码为空
 		if(account.getUsername() == null || account.getPassword() == null) {
@@ -24,16 +24,16 @@ public class LoginServiceImpl implements LoginService {
 			return "false";
 		}
 		//登录时用户不存在
-		if(loginmapper.select(account.getUsername(),DigestUtils.md5DigestAsHex(account.getPassword().getBytes())) == null) {
+		if(loginmapper.selectAccountIsExists(account.getUsername(),DigestUtils.md5DigestAsHex(account.getPassword().getBytes())) == null) {
 			//登录失败埋点
-			log.warn(0+" "+4+" "+registService.selectidbyname(account.getUsername())+" "+0+" "+3);
+			log.warn(0+" "+4+" "+0+" "+0+" "+3);
 			return "false";
 		}else {
 			//登录时用户存在
 			// 把用户id放到session中
-			request.getSession().setAttribute("userid", (int)registService.selectidbyname(account.getUsername()));
+			request.getSession().setAttribute("userid", (int)registService.selectIdByName(account.getUsername()));
 			//登录成功埋点
-			log.warn(0+" "+4+" "+registService.selectidbyname(account.getUsername())+" "+0+" "+2);
+			log.warn(0+" "+4+" "+registService.selectIdByName(account.getUsername())+" "+0+" "+2);
 			return "success";
 		}
 	}

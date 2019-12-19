@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 
+ * 登录控制层
+ *
+ */
 @RestController
-// 登陆的Controller层
+// 登陆跳转控制层
 public class LoginController {
 	@Autowired
 	LoginService loginService;
@@ -19,7 +24,7 @@ public class LoginController {
 	public String select(@RequestBody Account account, HttpServletRequest request) throws Exception {
 		
 		//登录成功"success" 失败返回 "false"
-		return loginService.select(account,request);
+		return loginService.selectAccountIsExists(account,request);
 	}
 	
 }

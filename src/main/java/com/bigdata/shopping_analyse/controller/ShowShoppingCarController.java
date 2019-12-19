@@ -11,12 +11,18 @@ import com.bigdata.shopping_analyse.service.ShowShoppingCarService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * 购物车商品控制层
+ *
+ */
+
 @Controller
 @Slf4j
 public class ShowShoppingCarController {
 	@Autowired ShowShoppingCarService showshoppingcarservice;
 
-	// 查看当前用户的购物车里的商品
+	// 用户查看当前的购物车里的商品
 	@RequestMapping("/ShowCarList")
 	public String listShoppingCar(Model m, HttpServletRequest request) throws Exception {
 		// 根据userid 查询购物车内商品id ,根据商品id查询商品详情信息
@@ -25,6 +31,7 @@ public class ShowShoppingCarController {
 			log.warn(0+" "+6+ " " +0+" "+ 0 + " " + 3);
 			return "login";
 		} else {
+			// 如果登录,跳转到购物车页面
 			List<Goods> goodslist = showshoppingcarservice.selectGoodsInCarByUserid((int) request.getSession().getAttribute("userid"));
 			m.addAttribute("goodslist", goodslist);
 			return "shoppingcarList";

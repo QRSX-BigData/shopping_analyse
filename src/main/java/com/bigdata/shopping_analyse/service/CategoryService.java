@@ -6,6 +6,6 @@ import com.bigdata.shopping_analyse.pojo.Goods;
 
 public interface CategoryService {
 
-	List<Goods> selectcategory(int id);
+	List<Goods> selectCategory(int id);
 	
 }

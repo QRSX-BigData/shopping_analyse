@@ -6,5 +6,5 @@ import com.bigdata.shopping_analyse.pojo.Account;
 
 //登陆接口
 public interface LoginService {
-   String select(Account account, HttpServletRequest request);
+   String selectAccountIsExists(Account account, HttpServletRequest request);
 }

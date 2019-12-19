@@ -12,7 +12,7 @@ import com.bigdata.shopping_analyse.service.CategoryService;
 public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired CategoryMapper categorymapper;
-	public List<Goods> selectcategory(int id) {
+	public List<Goods> selectCategory(int id) {
 		return categorymapper.selectCategory(id);
 	}
 
