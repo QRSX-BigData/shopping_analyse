@@ -1,5 +1,7 @@
 package com.bigdata.shopping_analyse.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +15,8 @@ public class GoodsDetailsController {
 
 	// 跳转到商品详情表
 	@GetMapping("/shop01")//控制层的获取方法必须要和url 的方法 要一致   就像是dopost 和doget 一样
-	public String shop(Model m,int id) throws Exception {
-		Goods shop=goodsdetailsservice.selectgoodsdetailsbyid(id);	
+	public String shop(Model m,int id,HttpServletRequest request) throws Exception {
+		Goods shop=goodsdetailsservice.selectgoodsdetailsbyid(id,request.getSession().getAttribute("userid"));	
 		m.addAttribute("shop", shop);
 		return "shop1";
 	}

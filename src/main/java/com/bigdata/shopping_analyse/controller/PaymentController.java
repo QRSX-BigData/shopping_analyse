@@ -12,10 +12,13 @@ import com.bigdata.shopping_analyse.pojo.Order;
 import com.bigdata.shopping_analyse.service.PaymentService;
 import com.bigdata.shopping_analyse.service.ShowShoppingCarService;
 
+import lombok.extern.slf4j.Slf4j;
+
 /*
  * 支付控制层
  */
 @Controller
+@Slf4j
 public class PaymentController {
 	@Resource PaymentService paymentService;
 	@Resource  GoodsDetailsMapper goodsdetailsmapper;
@@ -24,12 +27,12 @@ public class PaymentController {
 	// 商品详情页的购买
 	@RequestMapping("/paymentone")
 	// 前台传商品id,controller层返回server层的处理结果，server层将姓名，商品id插入，返回处理结果
-
 	// 提交一个商品的订单
 	public String paymentone(Model m, HttpServletRequest request, int id) throws Exception {
 
 		// 如果没有登录跳转到登录页面
 		if (request.getSession().getAttribute("userid") == null) {
+			log.warn(0+" "+3+ " " +0+" "+ id + " " + 3);
 			return "login";
 		} else {
 			// 成功返回前台true,失败返回false
@@ -42,12 +45,11 @@ public class PaymentController {
 
 	// 购物车页面的购买
 	@RequestMapping("/paymentone1")
-	// 前台传商品id,controller层返回server层的处理结果，server层将姓名，商品id插入，返回处理结果
-
-	// 提交一个商品的订单
-	public String paymentone1(Model m, HttpServletRequest request) throws Exception {
-
+	// 提交一个商品的订单                                                    
+	public String paymentone1(Model m, HttpServletRequest request,int id) throws Exception {
+		// 如果没有登录跳转到登录页面
 		if (request.getSession().getAttribute("userid") == null) {
+			log.warn(0+" "+3+ " " +0+" "+ id + " " + 3);
 			return "login";
 		} else {
 			List<Goods> goodslist = showshoppingcarservice.selectGoodsInCarByUserid((int) request.getSession().getAttribute("userid"));

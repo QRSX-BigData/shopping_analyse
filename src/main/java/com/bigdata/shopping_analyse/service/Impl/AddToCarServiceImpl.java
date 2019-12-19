@@ -3,10 +3,12 @@ package com.bigdata.shopping_analyse.service.Impl;
 import com.bigdata.shopping_analyse.mapper.AddToCarMapper;
 import com.bigdata.shopping_analyse.pojo.ShoppingCar;
 import com.bigdata.shopping_analyse.service.AddToCarService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class AddToCarServiceImpl implements AddToCarService {
 	@Autowired
 	AddToCarMapper addtocarMapper;
@@ -23,15 +25,23 @@ public class AddToCarServiceImpl implements AddToCarService {
 		s.setGoods_id(goodsid);
 		// 商品已存在,就不用添加
 		if (addtocarMapper.selectGoodsIsExist(s) > 0) {
+			//已存在返回1埋点
+			log.warn(addtocarMapper.selectGoodstype(goodsid) + " " +1+" "+ userid + " " + goodsid + " " + 1);
 			return 1;
-		} else {                                               
-			// 添加成功返回2
-			if (addtocarMapper.insertgoods(s) == 1) {//
+		} else {
+			if (addtocarMapper.insertgoods(s) == 1) {
+				//添加成功返回2埋点
+				log.warn(addtocarMapper.selectGoodstype(goodsid) + " " +2+" "+ userid + " " + goodsid + " " + 2);
 				return 2;
 			} else {
-			// 添加失败返回3
+				// 添加失败返回3埋点
+				log.warn(addtocarMapper.selectGoodstype(goodsid) + " " +2+" "+ userid + " " + goodsid + " " + 3);
 				return 3;
 			}
 		}
+	}
+
+	public int selectGoodstype(int goodsid) {
+		return addtocarMapper.selectGoodstype(goodsid) ;
 	}
 }
