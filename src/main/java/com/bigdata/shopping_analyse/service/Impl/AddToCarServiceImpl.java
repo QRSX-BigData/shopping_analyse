@@ -41,7 +41,6 @@ public class AddToCarServiceImpl implements AddToCarService {
 		}
 	}
 
-	@Override
 	public int selectGoodstype(int goodsid) {
 		return addtocarMapper.selectGoodstype(goodsid) ;
 	}
