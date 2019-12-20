@@ -1,9 +1,18 @@
 package com.bigdata.shopping_analyse.pojo;
 
+/**
+ * 账号信息表
+ * @author acer-pc
+ *
+ */
 public class Account {
+	// 用户名
     private String username;
+    // 密码
     private String password;
+    // 地址
     private String address;
+    // 练习电话
     private String phone;
 
     public String getUsername() {

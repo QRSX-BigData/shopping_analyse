@@ -1,14 +1,28 @@
 package com.bigdata.shopping_analyse.pojo;
 
+/**
+ * 商品表
+ * @author acer-pc
+ *
+ */
 public class Goods {
+	// 主键
 	private int goods_id_key;
+	// 商品名称
 	private String goods_name;
+	// 商品价格
 	private int goods_price;
+	// 商品数量
 	private int goods_num;
+	// 商品分类
 	private String goods_type;
+	// 创建的id
 	private String create_id;
+	// 创建的时间
 	private String create_time;
+	// 更新的id
 	private String update_id;
+	// 更新的时间
 	private String update_time_time;
 
 	public int getGoods_id_key() {

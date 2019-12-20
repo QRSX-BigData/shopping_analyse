@@ -1,11 +1,22 @@
 package com.bigdata.shopping_analyse.pojo;
 
+/**
+ * 购物车
+ * @author acer-pc
+ *
+ */
 public class ShoppingCar {
+	// 主键
 	private int shopping_car_id_key;
+	// 用户 id
 	private int user_id;
+	// 商品id
 	private int goods_id;
+	// 创建时间
 	private String create_time;
+	// 更新时间
 	private String update_time;
+	
 	public int getShopping_car_id_key() {
 		return shopping_car_id_key;
 	}

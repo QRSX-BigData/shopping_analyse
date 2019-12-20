@@ -1,19 +1,38 @@
 package com.bigdata.shopping_analyse.pojo;
 
+/**
+ * 用户详情表
+ * @author acer-pc
+ *
+ */
 public class User {
+	//  主键
     private int user_id_key;
+    // 用户名
     private String username;
+    // 用户密码
     private String userpwd;
+    // 收货地址
     private String address;
+    // 交易成功订单数
     private int shopping_success_num;
+    // 交易失败 订单数
     private int shopping_fail_num;
+    // 总交易额
     private double total_money_shopping_success;
+    // 总退款额
     private double total_money_shopping_fail;
+    // 最后登陆时间
     private String last_login_time;
+    // 创建id
     private String create_id;
+    // 创建时间
     private String create_time;
+    // 更新id
     private String update_id;
+    // 更新时间
     private String update_time_time;
+    
 	public int getUser_id_key() {
 		return user_id_key;
 	}
