@@ -10,23 +10,31 @@
 			<!--<JSONLayout compact="true" eventEol="true"/> -->
 			<!--输出日志的格式 -->
 			<!--格式我只用了取具体日志的格式，去掉了多余信息的显示，例如时间和类 -->
-			 <PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n"/>
+			<PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n" />
 		</console>
 		
-		<!--log文件输出-->
-        <File name="MyFile" fileName="logs/shopweb.log">
-            <PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n"/>
-        </File>
-		
-		<!--输出到flume -->
+		<!--log文件输出 -->
+		<File name="MyFile" fileName="logs/shopweb.log">
+			<PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n" />
+		</File>
+
+		<!--输出到虚拟机的44444端口 flume监听该端口采集传到hdfs -->
 		<!--flume中XX.conf配置文件的type也要改为avro，其他的接收不到 -->
-		<Flume name="flume" compress="false" type="Avro">
-			<!--注意要把host改为自己虚拟机的ip地址 -->
+		<Flume name="flume_hdfs" compress="false" type="Avro">
+			<!-- 注意要把host改为自己虚拟机的ip地址 -->
 			<Agent host="192.168.150.129" port="44444" />
-			<!--输出方式为json -->
-			<!-- <JSONLayout/> -->
-			 <PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n"/>
+			<!-- json格式传输 -->
+			<!-- <JSONLayout /> -->
+			<PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n" />
 		</Flume>
+
+		<!--输出到虚拟机的55555端口 flume监听该端口采集到kafka -->
+ 		<Flume name="flume_kafka" compress="false" type="Avro">
+			<!-- host是虚拟机的ip地址 -->
+			<Agent host="192.168.150.129" port="55555" />
+			<PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n" />
+		</Flume> 
+
 	</appenders>
 	<!--然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
 	<loggers>
@@ -38,7 +46,8 @@
 		<root level="warn">
 			<appender-ref ref="Console" />
 			<appender-ref ref="MyFile" />
-			<appender-ref ref="flume" />
+			<appender-ref ref="flume_hdfs" />
+			<appender-ref ref="flume_kafka" />
 		</root>
 	</loggers>
 </configuration>
