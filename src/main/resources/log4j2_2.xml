@@ -12,12 +12,12 @@
 			<!--格式我只用了取具体日志的格式，去掉了多余信息的显示，例如时间和类 -->
 			<PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n" />
 		</console>
-		
+
 		<!--log文件输出 -->
 		<File name="MyFile" fileName="logs/shopweb.log">
-			<PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m" />
+			<PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n" />
 		</File>
-
+		
 		<!--输出到虚拟机的44444端口 flume监听该端口采集传到hdfs -->
 		<!--flume中XX.conf配置文件的type也要改为avro，其他的接收不到 -->
 		<Flume name="flume_hdfs" compress="false" type="Avro">
@@ -28,12 +28,13 @@
 			<PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n" />
 		</Flume>
 
-		<!--输出到虚拟机的55555端口 flume监听该端口采集到kafka -->
- 		<Flume name="flume_kafka" compress="false" type="Avro">
-			<!-- host是虚拟机的ip地址 -->
-			<Agent host="virhost01" port="55555" />
+		<!--输出到Kafka -->
+		<Kafka name="kafka" topic="weblog1">
+			<ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY" />
 			<PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m" />
-		</Flume> 
+			<!-- 注意要把host改为自己虚拟机的ip地址 -->
+			<Property name="bootstrap.servers">virhost01:9092</Property>
+		</Kafka> 
 
 	</appenders>
 	<!--然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
@@ -43,11 +44,11 @@
 		<logger name="org.springframework" level="warn"></logger>
 		<logger name="org.mybatis" level="warn"></logger>
 		<!--这里设置的是全局的日志显示级别 -->
-		<root level="warn">
+		<root level="WARN">
 			<appender-ref ref="Console" />
 			<appender-ref ref="MyFile" />
 			<appender-ref ref="flume_hdfs" />
-			<appender-ref ref="flume_kafka" />
+			<appender-ref ref="kafka" />
 		</root>
 	</loggers>
 </configuration>

@@ -22,7 +22,7 @@
         
         <!--输出到flume-->
         <Flume name="FlumeInfo" compress="false" type="avro" ignoreExceptions="true">
-            <Agent host="192.168.150.129" port="44444"/>
+            <Agent host="virhost01" port="44444"/>
             <!--输出方式为json-->
             <!--<JSONLayout/>-->
            <PatternLayout pattern="%d{yyyy-MM-dd-HH-mm-ss} %m%n"/>
