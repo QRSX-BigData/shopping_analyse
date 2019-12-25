@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Select;
 public interface LoginMapper {
     //登陆
     @Select("select username,userpwd from user_info where username=#{0} and userpwd = #{1}")
-    public Account selectAccountIsExists(String username, String userpwd);
+    Account selectAccountIsExists(String username, String userpwd);
 }

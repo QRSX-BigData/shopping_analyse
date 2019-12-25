@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 import com.bigdata.shopping_analyse.mapper.CategoryMapper;
 import com.bigdata.shopping_analyse.pojo.Goods;
 import com.bigdata.shopping_analyse.service.CategoryService;
-
+/**
+ * 分类信息实现层
+ * @author kingz
+ *
+ */
 @Service
 public class CategoryServiceImpl implements CategoryService {
 

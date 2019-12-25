@@ -9,9 +9,11 @@ import org.springframework.boot.Banner;
 @SpringBootApplication
 public class Application {
 	public static void main(String[] args) {
+		//这里是清除springboot启动图标以及版本信息
 		SpringApplication springApplication = new SpringApplication(Application.class);
 		springApplication.setBannerMode(Banner.Mode.OFF);
 		springApplication.run(args);
+		// 下面是正常启动
 		// SpringApplication.run(Application.class, args);
 	}
 }

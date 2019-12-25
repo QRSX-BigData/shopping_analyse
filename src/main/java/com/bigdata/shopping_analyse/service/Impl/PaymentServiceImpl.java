@@ -13,7 +13,11 @@ import com.bigdata.shopping_analyse.service.PaymentService;
 
 import lombok.extern.slf4j.Slf4j;
 
-//扫描
+/**
+ * 支付实现层
+ * @author kingz
+ *
+ */
 @Service("PaymentService")
 @Slf4j
 public class PaymentServiceImpl implements PaymentService{
@@ -28,10 +32,10 @@ public class PaymentServiceImpl implements PaymentService{
 		o.setOrder_id(df.format(new Date())+userid);
 		o.setGoods_id(goodsid);
 		if(paymentmapper.insertOne1(o)> 0) {
-			log.warn(addtocarmapper.selectGoodstype(goodsid)+" "+3+" "+userid+" "+goodsid+" "+2);
+			log.warn(addtocarmapper.selectGoodsType(goodsid)+" "+3+" "+userid+" "+goodsid+" "+2+" "+paymentmapper.selectGoodsprice(goodsid));
 			return true;
 		}else {
-			log.warn(addtocarmapper.selectGoodstype(goodsid)+" "+3+" "+userid+" "+goodsid+" "+3);
+			log.warn(addtocarmapper.selectGoodsType(goodsid)+" "+3+" "+userid+" "+goodsid+" "+3 +" "+0);
 			return false;
 		}
 //		return paymentmapper.insertone1(o)> 0 ? true:false;

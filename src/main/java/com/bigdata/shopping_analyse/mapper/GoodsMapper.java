@@ -6,7 +6,11 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.bigdata.shopping_analyse.pojo.Goods;
-
+/**
+ * 
+ * 查询全部商品mapper层
+ *
+ */
 @Mapper
 public interface GoodsMapper {
 	

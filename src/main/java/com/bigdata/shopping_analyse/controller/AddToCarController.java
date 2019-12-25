@@ -28,7 +28,7 @@ public class AddToCarController {
 
 		// 如果没有登录,跳转到登录页面
 		if (request.getSession().getAttribute("userid") == null) {
-			log.warn(0+" "+2+ " " +0+ " " + id + " " + 3);
+			log.warn(0+" "+2+ " " +0+ " " + id + " " + 3 +" "+0);
 			return "login";
 		} else {
 			// 如果登录,跳转到商品详情页面

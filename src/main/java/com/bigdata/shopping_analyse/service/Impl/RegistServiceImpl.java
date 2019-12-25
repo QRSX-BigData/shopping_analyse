@@ -6,7 +6,11 @@ import com.bigdata.shopping_analyse.service.RegistService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+/**
+ * 注册实现层
+ * @author kingz
+ *
+ */
 @Service
 @Slf4j
 public class RegistServiceImpl implements RegistService {
@@ -26,17 +30,17 @@ public class RegistServiceImpl implements RegistService {
 			//用户注册成功
 			if (registMapper.add(s) == 1) {
 				//注册成功埋点
-				log.warn(0+" "+5+" "+registMapper.selectIdByName(s.getUsername())+" "+0+" "+2);
+				log.warn(0+" "+5+" "+registMapper.selectIdByName(s.getUsername())+" "+0+" "+2 +" "+0);
 				return "success";
 			} else {
 				//注册失败埋点
-				log.warn(0+" "+5+" "+registMapper.selectIdByName(s.getUsername())+" "+0+" "+3);
+				log.warn(0+" "+5+" "+registMapper.selectIdByName(s.getUsername())+" "+0+" "+3 +" "+0);
 				return "false";
 			}
 		} else {
 			//注册的用户已经存在埋点
 			//注册失败埋点
-			log.warn(0+" "+5+" "+registMapper.selectIdByName(s.getUsername())+" "+0+" "+1);
+			log.warn(0+" "+5+" "+registMapper.selectIdByName(s.getUsername())+" "+0+" "+1 +" "+0);
 			return "false";
 		}
 	}

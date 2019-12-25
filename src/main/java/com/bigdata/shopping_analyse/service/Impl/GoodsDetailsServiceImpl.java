@@ -10,6 +10,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * 商品详情信息实现层
+ * @author kingz
+ *
+ */
 @Service
 @Slf4j
 public class GoodsDetailsServiceImpl implements GoodsDetailsService {
@@ -21,11 +26,11 @@ public class GoodsDetailsServiceImpl implements GoodsDetailsService {
 	public Goods selectgoodsdetailsbyid(int goodsid, Object userid) {
 		// 未登录的用户浏览商品详情
 		if (userid == null) {
-			log.warn(addtocarmapper.selectGoodstype(goodsid) + " " + 1 +" "+ 0 + " " + goodsid + " " + 2);
+			log.warn(addtocarmapper.selectGoodsType(goodsid) + " " + 1 +" "+ 0 + " " + goodsid + " " + 2 +" "+0);
 			return goodsdetailsmapper.selectGoodsDetails(goodsid);
 		} else {
 			// 登录的用户浏览商品详情
-			log.warn(addtocarmapper.selectGoodstype(goodsid) + " " + 1 +" "+ userid + " " + goodsid + " " + 2);
+			log.warn(addtocarmapper.selectGoodsType(goodsid) + " " + 1 +" "+ userid + " " + goodsid + " " + 2 +" "+0);
 			return goodsdetailsmapper.selectGoodsDetails(goodsid);
 		}
 	}

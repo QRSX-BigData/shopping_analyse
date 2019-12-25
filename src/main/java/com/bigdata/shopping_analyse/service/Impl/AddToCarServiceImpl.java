@@ -6,7 +6,11 @@ import com.bigdata.shopping_analyse.service.AddToCarService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+/**
+ * 购物车实现层
+ * @author kingz
+ *
+ */
 @Service
 @Slf4j
 public class AddToCarServiceImpl implements AddToCarService {
@@ -26,22 +30,22 @@ public class AddToCarServiceImpl implements AddToCarService {
 		// 商品已存在,就不用添加
 		if (addtocarMapper.selectGoodsIsExist(s) > 0) {
 			//已存在返回1埋点
-			log.warn(addtocarMapper.selectGoodstype(goodsid) + " " +1+" "+ userid + " " + goodsid + " " + 1);
+			log.warn(addtocarMapper.selectGoodsType(goodsid) + " " +1+" "+ userid + " " + goodsid + " " + 1 +" "+0);
 			return 1;
 		} else {
 			if (addtocarMapper.insertGoods(s) == 1) {
 				//添加成功返回2埋点
-				log.warn(addtocarMapper.selectGoodstype(goodsid) + " " +2+" "+ userid + " " + goodsid + " " + 2);
+				log.warn(addtocarMapper.selectGoodsType(goodsid) + " " +2+" "+ userid + " " + goodsid + " " + 2 +" "+0);
 				return 2;
 			} else {
 				// 添加失败返回3埋点
-				log.warn(addtocarMapper.selectGoodstype(goodsid) + " " +2+" "+ userid + " " + goodsid + " " + 3);
+				log.warn(addtocarMapper.selectGoodsType(goodsid) + " " +2+" "+ userid + " " + goodsid + " " + 3 +" "+0);
 				return 3;
 			}
 		}
 	}
 
 	public int selectGoodstype(int goodsid) {
-		return addtocarMapper.selectGoodstype(goodsid) ;
+		return addtocarMapper.selectGoodsType(goodsid) ;
 	}
 }

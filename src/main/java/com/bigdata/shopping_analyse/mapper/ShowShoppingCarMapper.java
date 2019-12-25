@@ -4,7 +4,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import com.bigdata.shopping_analyse.pojo.Goods;
-
+/**
+ * 
+ * 购物车展示mapper层
+ *
+ */
 @Mapper
 public interface ShowShoppingCarMapper {
 	@Select(	

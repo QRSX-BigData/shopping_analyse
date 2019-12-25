@@ -32,7 +32,7 @@ public class PaymentController {
 
 		// 如果没有登录跳转到登录页面
 		if (request.getSession().getAttribute("userid") == null) {
-			log.warn(0+" "+3+ " " +0+" "+ id + " " + 3);
+			log.warn(0+" "+3+ " " +0+" "+ id + " " + 3 +" "+0);
 			return "login";
 		} else {
 			// 成功返回前台true,失败返回false
@@ -49,7 +49,7 @@ public class PaymentController {
 	public String paymentone1(Model m, HttpServletRequest request,int id) throws Exception {
 		// 如果没有登录跳转到登录页面
 		if (request.getSession().getAttribute("userid") == null) {
-			log.warn(0+" "+3+ " " +0+" "+ id + " " + 3);
+			log.warn(0+" "+3+ " " +0+" "+ id + " " + 3 +" "+0);
 			return "login";
 		} else {
 			List<Goods> goodslist = showshoppingcarservice.selectGoodsInCarByUserid((int) request.getSession().getAttribute("userid"));

@@ -28,7 +28,7 @@ public class ShowShoppingCarController {
 		// 根据userid 查询购物车内商品id ,根据商品id查询商品详情信息
 		// 如果没有登录,跳转到登录页面
 		if (request.getSession().getAttribute("userid") == null) {
-			log.warn(0+" "+6+ " " +0+" "+ 0 + " " + 3);
+			log.warn(0+" "+6+ " " +0+" "+ 0 + " " + 3 +" "+0);
 			return "login";
 		} else {
 			// 如果登录,跳转到购物车页面
