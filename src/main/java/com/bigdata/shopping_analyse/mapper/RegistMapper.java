@@ -4,7 +4,11 @@ import com.bigdata.shopping_analyse.pojo.Account;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-
+/**
+ * 
+ * 注册mapper层
+ *
+ */
 @Mapper
 public interface RegistMapper {
 	// 注册
